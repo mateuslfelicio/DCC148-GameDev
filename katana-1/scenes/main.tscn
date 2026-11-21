@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/boss.tscn" id="2_boss"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="3_hud"]
+
+[sub_resource type="RectangleShape2D" id="ground_shape"]
+size = Vector2(4000, 400)
+
+[sub_resource type="RectangleShape2D" id="wall_shape"]
+size = Vector2(40, 400)
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sky" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.53, 0.66, 0.78, 1)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("ground_shape")
+
+[node name="Visual" type="ColorRect" parent="Ground"]
+offset_left = -2000.0
+offset_top = -200.0
+offset_right = 2000.0
+offset_bottom = 200.0
+color = Color(0.25, 0.22, 0.2, 1)
+
+[node name="Grass" type="ColorRect" parent="Ground"]
+offset_left = -2000.0
+offset_top = -200.0
+offset_right = 2000.0
+offset_bottom = -197.0
+color = Color(0.36, 0.52, 0.3, 1)
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+position = Vector2(-280, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+shape = SubResource("wall_shape")
+
+[node name="Visual" type="ColorRect" parent="WallLeft"]
+offset_left = -20.0
+offset_top = -200.0
+offset_right = 20.0
+offset_bottom = 200.0
+color = Color(0.2, 0.18, 0.17, 1)
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+position = Vector2(640, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+shape = SubResource("wall_shape")
+
+[node name="Visual" type="ColorRect" parent="WallRight"]
+offset_left = -20.0
+offset_top = -200.0
+offset_right = 20.0
+offset_bottom = 200.0
+color = Color(0.2, 0.18, 0.17, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+
+[node name="Boss" parent="." instance=ExtResource("2_boss")]
+position = Vector2(300, 0)
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
