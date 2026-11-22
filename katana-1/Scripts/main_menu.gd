@@ -15,8 +15,10 @@ func _on_quit_pressed() -> void:
 
 func _on_controls_pressed() -> void:
 	main_menu.hide()
+	$"../ControlsMenu/VBoxContainer/Return".grab_focus()
 	controls_menu.show()
 
 func _on_return_pressed() -> void:
 	main_menu.show()
+	$"../MenuScreen/VBoxContainer/Play".grab_focus()
 	controls_menu.hide()

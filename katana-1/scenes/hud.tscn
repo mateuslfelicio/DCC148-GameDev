@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://ykas2jabk6gm"]
 
-[ext_resource type="Script" path="res://scripts/hud.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bllb7gscx3cet" path="res://scripts/hud.gd" id="1_script"]
 
 [sub_resource type="StyleBoxFlat" id="bar_bg"]
 bg_color = Color(0.08, 0.07, 0.07, 0.85)
@@ -13,18 +13,18 @@ border_color = Color(0.9, 0.85, 0.75, 0.9)
 [sub_resource type="StyleBoxFlat" id="player_fill"]
 bg_color = Color(0.45, 0.8, 0.4, 1)
 
-[sub_resource type="StyleBoxFlat" id="boss_fill"]
-bg_color = Color(0.8, 0.2, 0.18, 1)
-
 [sub_resource type="LabelSettings" id="label"]
 font_size = 8
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="HUD" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id="boss_fill"]
+bg_color = Color(0.8, 0.2, 0.18, 1)
+
+[node name="HUD" type="CanvasLayer" unique_id=252084998]
 script = ExtResource("1_script")
 
-[node name="PlayerBar" type="ProgressBar" parent="."]
+[node name="PlayerBar" type="ProgressBar" parent="." unique_id=1526447851]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
@@ -36,7 +36,7 @@ step = 1.0
 value = 5.0
 show_percentage = false
 
-[node name="BossName" type="Label" parent="."]
+[node name="BossName" type="Label" parent="." unique_id=1815380472]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -50,7 +50,7 @@ text = "IMPALER"
 label_settings = SubResource("label")
 horizontal_alignment = 1
 
-[node name="BossBar" type="ProgressBar" parent="."]
+[node name="BossBar" type="ProgressBar" parent="." unique_id=336453855]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -67,7 +67,7 @@ step = 1.0
 value = 40.0
 show_percentage = false
 
-[node name="Message" type="Label" parent="."]
+[node name="Message" type="Label" parent="." unique_id=2118174021]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

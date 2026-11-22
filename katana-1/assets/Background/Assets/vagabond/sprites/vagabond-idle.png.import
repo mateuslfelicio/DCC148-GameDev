@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsv1s0ba0kdma"
-path="res://.godot/imported/vagabond-idle.png-0dc4a8d64c823c761734acd9e6773f34.ctex"
+path="res://.godot/imported/vagabond-idle.png-1a427b58eb36fede3cacf09fe1cdff2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background/Assets/vagabond/sprites/vagabond-idle.png"
-dest_files=["res://.godot/imported/vagabond-idle.png-0dc4a8d64c823c761734acd9e6773f34.ctex"]
+source_file="res://Assets/Background/Assets/vagabond/sprites/vagabond-idle.png"
+dest_files=["res://.godot/imported/vagabond-idle.png-1a427b58eb36fede3cacf09fe1cdff2c.ctex"]
 
 [params]
 
