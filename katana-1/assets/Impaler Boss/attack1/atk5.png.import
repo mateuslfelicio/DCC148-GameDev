@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsyor3y5drlqw"
-path="res://.godot/imported/atk5.png-8499cd30dfa1a5529fcca912d7542d3c.ctex"
+path="res://.godot/imported/atk5.png-7c0c058b7113fd0e0654929df3086b05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Impaler Boss/attack1/atk5.png"
-dest_files=["res://.godot/imported/atk5.png-8499cd30dfa1a5529fcca912d7542d3c.ctex"]
+source_file="res://Assets/Impaler Boss/attack1/atk5.png"
+dest_files=["res://.godot/imported/atk5.png-7c0c058b7113fd0e0654929df3086b05.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct1s1vsheomn"
-path="res://.godot/imported/vagabond-landing-prep-jump.png-6062e34a3fd844efd74031fb1ecfc970.ctex"
+path="res://.godot/imported/vagabond-landing-prep-jump.png-57af72c815c69ece347f2fbf948ffb68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vagabond/assets/gif/2x/vagabond-landing-prep-jump.png"
-dest_files=["res://.godot/imported/vagabond-landing-prep-jump.png-6062e34a3fd844efd74031fb1ecfc970.ctex"]
+source_file="res://Assets/Background/Assets/vagabond/assets/gif/2x/vagabond-landing-prep-jump.png"
+dest_files=["res://.godot/imported/vagabond-landing-prep-jump.png-57af72c815c69ece347f2fbf948ffb68.ctex"]
 
 [params]
 

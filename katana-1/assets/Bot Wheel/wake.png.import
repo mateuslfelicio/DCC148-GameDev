@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wkp067wjj82f"
-path="res://.godot/imported/wake.png-46ca8f9a6669e50a807aedbee8944241.ctex"
+path="res://.godot/imported/wake.png-3e25b1bff16544fa833837414bd6f8b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/Bot Wheel/wake.png"
-dest_files=["res://.godot/imported/wake.png-46ca8f9a6669e50a807aedbee8944241.ctex"]
+source_file="res://Assets/Bot Wheel/wake.png"
+dest_files=["res://.godot/imported/wake.png-3e25b1bff16544fa833837414bd6f8b3.ctex"]
 
 [params]
 

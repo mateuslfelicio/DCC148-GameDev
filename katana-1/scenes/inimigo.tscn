@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://onox53h8bxxg"]
 
-[ext_resource type="Script" uid="uid://exo0hp55rrfv" path="res://Scripts/inimigo.gd" id="1_lmfak"]
+[ext_resource type="Script" uid="uid://exo0hp55rrfv" path="res://scripts/inimigo.gd" id="1_lmfak"]
 [ext_resource type="PackedScene" uid="uid://b0srr7w6mq0i8" path="res://Scenes/projetil.tscn" id="2_lmfak"]
-[ext_resource type="Texture2D" uid="uid://drv4uxw0o0onc" path="res://Assest/Bot Wheel/charge.png" id="3_77tmc"]
-[ext_resource type="Texture2D" uid="uid://cl27onn0vtkvo" path="res://Assest/Bot Wheel/GAS dash with FX.png" id="4_v1a2k"]
-[ext_resource type="Texture2D" uid="uid://d3xa1rmykbii3" path="res://Assest/Bot Wheel/death.png" id="5_ar8p1"]
-[ext_resource type="Texture2D" uid="uid://ci150bpsy63vp" path="res://Assest/Bot Wheel/damaged.png" id="6_fads8"]
-[ext_resource type="Texture2D" uid="uid://cwsk3bdldug2l" path="res://Assest/Bot Wheel/static idle.png" id="7_w1nwj"]
-[ext_resource type="Texture2D" uid="uid://wkp067wjj82f" path="res://Assest/Bot Wheel/wake.png" id="8_aooml"]
+[ext_resource type="Texture2D" uid="uid://drv4uxw0o0onc" path="res://Assets/Bot Wheel/charge.png" id="3_77tmc"]
+[ext_resource type="Texture2D" uid="uid://cl27onn0vtkvo" path="res://Assets/Bot Wheel/GAS dash with FX.png" id="4_v1a2k"]
+[ext_resource type="Texture2D" uid="uid://d3xa1rmykbii3" path="res://Assets/Bot Wheel/death.png" id="5_ar8p1"]
+[ext_resource type="Texture2D" uid="uid://ci150bpsy63vp" path="res://Assets/Bot Wheel/damaged.png" id="6_fads8"]
+[ext_resource type="Texture2D" uid="uid://cwsk3bdldug2l" path="res://Assets/Bot Wheel/static idle.png" id="7_w1nwj"]
+[ext_resource type="Texture2D" uid="uid://wkp067wjj82f" path="res://Assets/Bot Wheel/wake.png" id="8_aooml"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3af6e"]
 atlas = ExtResource("3_77tmc")

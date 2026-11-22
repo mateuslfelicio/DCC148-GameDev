@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://opjspus5o3ky"
-path="res://.godot/imported/end-Attack 3.png-832e01d0c16d5aa7f6caa34a4d28507a.ctex"
+path="res://.godot/imported/end-Attack 3.png-ac176a2d82bf1ac8c91d4e606c4743c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/Sprite Sheet/new/end-Attack 3.png"
-dest_files=["res://.godot/imported/end-Attack 3.png-832e01d0c16d5aa7f6caa34a4d28507a.ctex"]
+source_file="res://Assets/Sprite Sheet/new/end-Attack 3.png"
+dest_files=["res://.godot/imported/end-Attack 3.png-ac176a2d82bf1ac8c91d4e606c4743c3.ctex"]
 
 [params]
 

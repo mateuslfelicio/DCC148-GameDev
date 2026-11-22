@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ba21dcw12l4c3"
-path="res://.godot/imported/vagabond-run_end.png-40f0e0a7bc6278d295736667b125994a.ctex"
+path="res://.godot/imported/vagabond-run_end.png-7e41e0e3d895b346bd72a70cd9089c1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vagabond/sprites/vagabond-run_end.png"
-dest_files=["res://.godot/imported/vagabond-run_end.png-40f0e0a7bc6278d295736667b125994a.ctex"]
+source_file="res://Assets/Background/Assets/vagabond/sprites/vagabond-run_end.png"
+dest_files=["res://.godot/imported/vagabond-run_end.png-7e41e0e3d895b346bd72a70cd9089c1e.ctex"]
 
 [params]
 

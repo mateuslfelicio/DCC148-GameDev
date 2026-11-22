@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvlvwktvbfflw"
-path="res://.godot/imported/sans.png-a2bdb6a77a6cddc9051e14fd0bb7d507.ctex"
+uid="uid://b2iwydrh54m5r"
+path="res://.godot/imported/sans.png-f8a833a4173480fba081e42cb855c138.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/sans.png"
-dest_files=["res://.godot/imported/sans.png-a2bdb6a77a6cddc9051e14fd0bb7d507.ctex"]
+source_file="res://Assets/sans.png"
+dest_files=["res://.godot/imported/sans.png-f8a833a4173480fba081e42cb855c138.ctex"]
 
 [params]
 

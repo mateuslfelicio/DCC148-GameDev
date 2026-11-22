@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://y0baikue1pfs"
-path="res://.godot/imported/vagabond-attack.png-8db0f207d86f9a0967ce2d37e3b58685.ctex"
+path="res://.godot/imported/vagabond-attack.png-57b53f4ff368cecd299f28c843da7c8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vagabond/sprites/vagabond-attack.png"
-dest_files=["res://.godot/imported/vagabond-attack.png-8db0f207d86f9a0967ce2d37e3b58685.ctex"]
+source_file="res://Assets/Background/Assets/vagabond/sprites/vagabond-attack.png"
+dest_files=["res://.godot/imported/vagabond-attack.png-57b53f4ff368cecd299f28c843da7c8d.ctex"]
 
 [params]
 

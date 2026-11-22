@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://s5hgh8rcicgd"]
 
-[ext_resource type="Script" uid="uid://6ee7gy8o645n" path="res://Scripts/impact.gd" id="1_oy2kq"]
-[ext_resource type="Texture2D" uid="uid://cygu7xyyhsigb" path="res://Assest/Bot Wheel/shoot FX.png" id="2_6uhbx"]
+[ext_resource type="Script" uid="uid://6ee7gy8o645n" path="res://scripts/impact.gd" id="1_oy2kq"]
+[ext_resource type="Texture2D" uid="uid://cygu7xyyhsigb" path="res://Assets/Bot Wheel/shoot FX.png" id="2_6uhbx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_caylm"]
 atlas = ExtResource("2_6uhbx")
