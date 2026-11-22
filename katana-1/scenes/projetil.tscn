@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://b0srr7w6mq0i8"]
 
 [ext_resource type="Script" uid="uid://cgb5vbmvlotbd" path="res://scripts/projetil.gd" id="1_e1qxg"]
-[ext_resource type="PackedScene" uid="uid://s5hgh8rcicgd" path="res://Scenes/impact.tscn" id="2_tj6io"]
-[ext_resource type="Texture2D" uid="uid://ccx5ff2cl4xci" path="res://Assets/tiro.png" id="3_u11v5"]
+[ext_resource type="PackedScene" uid="uid://s5hgh8rcicgd" path="res://scenes/impact.tscn" id="2_tj6io"]
+[ext_resource type="Texture2D" uid="uid://ccx5ff2cl4xci" path="res://assets/tiro.png" id="3_u11v5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ip8sl"]
 radius = 8.0
 
 [node name="projetil" type="Area2D" unique_id=955572810]
+collision_layer = 2
+collision_mask = 8
 script = ExtResource("1_e1qxg")
 impact_scene = ExtResource("2_tj6io")
 

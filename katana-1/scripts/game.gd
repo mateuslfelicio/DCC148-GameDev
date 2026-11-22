@@ -35,7 +35,7 @@ func _ready() -> void:
 
 	# Tenta criar o primeiro inimigo imediatamente
 	_spawn_enemy()
-
+	spawn_boss()
 	spawn_timer.start()
 
 

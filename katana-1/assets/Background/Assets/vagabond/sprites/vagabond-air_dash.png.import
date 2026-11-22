@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://de502xidd0rwy"
-path="res://.godot/imported/vagabond-air_dash.png-0c0ff55198c6232471e4a8e62e615381.ctex"
+path="res://.godot/imported/vagabond-air_dash.png-9bab1b83e29d0b3a91a8d3d815b7612a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Background/Assets/vagabond/sprites/vagabond-air_dash.png"
-dest_files=["res://.godot/imported/vagabond-air_dash.png-0c0ff55198c6232471e4a8e62e615381.ctex"]
+source_file="res://assets/Background/Assets/vagabond/sprites/vagabond-air_dash.png"
+dest_files=["res://.godot/imported/vagabond-air_dash.png-9bab1b83e29d0b3a91a8d3d815b7612a.ctex"]
 
 [params]
 

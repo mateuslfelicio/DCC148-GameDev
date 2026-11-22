@@ -5,11 +5,6 @@ extends CharacterBody2D
 @export var stopping_distance: float = 80.0
 @export var projectile_scene: PackedScene
 
-# Dash
-@export var dash_speed: float = 300.0
-@export var dash_duration: float = 0.25
-@export var dash_cooldown: float = 3.5
-
 # Vida
 @export var max_health: int = 3
 @export var hit_invulnerability: float = 0.35
@@ -24,18 +19,16 @@ var active: bool = false
 var dead: bool = false
 
 var health: int
-var dash_timer: float = 0.0
-var dash_cooldown_timer: float = 0.0
-var dash_direction: float = 0.0
 var hit_timer: float = 0.0
 var invulnerability_timer: float = 0.0
+var shoot_offset_x: float = 0.0
 
-var is_dashing: bool = false
 var is_hit: bool = false
 
 
 func _ready() -> void:
 	health = max_health
+	shoot_offset_x = abs(shoot_point.position.x)
 	sprite.play("idle")
 
 	detection_area.body_entered.connect(_on_body_entered)
@@ -54,10 +47,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 0.0
 
-	# Cooldowns
-	if dash_cooldown_timer > 0.0:
-		dash_cooldown_timer -= delta
-
+	# Invulnerabilidade
 	if invulnerability_timer > 0.0:
 		invulnerability_timer -= delta
 
@@ -72,18 +62,6 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	# Dash ativo
-	if is_dashing:
-		dash_timer -= delta
-		velocity.x = dash_direction * dash_speed
-
-		move_and_slide()
-
-		if dash_timer <= 0.0:
-			is_dashing = false
-
-		return
-
 	# Sem jogador detectado
 	if not active or not is_instance_valid(player):
 		velocity.x = 0.0
@@ -96,15 +74,10 @@ func _physics_process(delta: float) -> void:
 	# Direção
 	var direction: float = sign(player.global_position.x - global_position.x)
 
-	# Vira o sprite
+	# Vira o sprite e ajusta o ponto de tiro
 	if direction != 0:
 		sprite.flip_h = direction < 0
-
-	# Inicia dash se estiver disponível e perseguindo
-	if dash_cooldown_timer <= 0.0 and distance_x > stopping_distance:
-		_start_dash(direction)
-		move_and_slide()
-		return
+		shoot_point.position.x = shoot_offset_x * (-1.0 if direction < 0 else 1.0)
 
 	# Perseguição normal
 	if distance_x > stopping_distance:
@@ -113,16 +86,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 
 	move_and_slide()
+	
+	if is_on_wall():
+		print("Estou batendo em uma parede!")
 
-func _start_dash(direction: float) -> void:
-	is_dashing = true
-	dash_timer = dash_duration
-	dash_cooldown_timer = dash_cooldown
-
-	dash_direction = direction
-
-	if sprite.sprite_frames.has_animation("dash"):
-		sprite.play("dash")
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
@@ -148,9 +115,10 @@ func _on_body_exited(body: Node2D) -> void:
 
 	shoot_timer.stop()
 
-	if not is_dashing and not is_hit:
+	if not is_hit:
 		if sprite.sprite_frames.has_animation("idle"):
 			sprite.play("idle")
+
 
 func _on_shoot_timer_timeout() -> void:
 	if dead or not active or not is_instance_valid(player):
@@ -159,8 +127,11 @@ func _on_shoot_timer_timeout() -> void:
 	if projectile_scene == null:
 		return
 
-	var projectile = projectile_scene.instantiate()
+	# Garante que o ponto de tiro está do lado certo
+	var facing: float = -1.0 if sprite.flip_h else 1.0
+	shoot_point.position.x = shoot_offset_x * facing
 
+	var projectile = projectile_scene.instantiate()
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = shoot_point.global_position
 
@@ -168,8 +139,12 @@ func _on_shoot_timer_timeout() -> void:
 		player.global_position - shoot_point.global_position
 	).normalized()
 
+	if projectile.has_method("launch"):
+		projectile.launch(direction, self)
+
 	if "direction" in projectile:
 		projectile.direction = direction
+
 
 func take_damage(amount: int = 1) -> void:
 	if dead or invulnerability_timer > 0.0:
@@ -185,16 +160,15 @@ func take_damage(amount: int = 1) -> void:
 	is_hit = true
 	hit_timer = 0.15
 
-	is_dashing = false
 	velocity.x = 0.0
 
 	if sprite.sprite_frames.has_animation("hit"):
 		sprite.play("hit")
 
+
 func die() -> void:
 	dead = true
 	active = false
-	is_dashing = false
 	is_hit = false
 
 	velocity = Vector2.ZERO
@@ -206,6 +180,7 @@ func die() -> void:
 		sprite.play("death")
 	else:
 		queue_free()
+
 
 func _on_animation_finished() -> void:
 	if dead and sprite.animation == "death":

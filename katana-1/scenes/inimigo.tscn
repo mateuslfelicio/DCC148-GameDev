@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://onox53h8bxxg"]
 
 [ext_resource type="Script" uid="uid://exo0hp55rrfv" path="res://scripts/inimigo.gd" id="1_lmfak"]
-[ext_resource type="PackedScene" uid="uid://b0srr7w6mq0i8" path="res://Scenes/projetil.tscn" id="2_lmfak"]
-[ext_resource type="Texture2D" uid="uid://drv4uxw0o0onc" path="res://Assets/Bot Wheel/charge.png" id="3_77tmc"]
-[ext_resource type="Texture2D" uid="uid://cl27onn0vtkvo" path="res://Assets/Bot Wheel/GAS dash with FX.png" id="4_v1a2k"]
-[ext_resource type="Texture2D" uid="uid://d3xa1rmykbii3" path="res://Assets/Bot Wheel/death.png" id="5_ar8p1"]
-[ext_resource type="Texture2D" uid="uid://ci150bpsy63vp" path="res://Assets/Bot Wheel/damaged.png" id="6_fads8"]
-[ext_resource type="Texture2D" uid="uid://cwsk3bdldug2l" path="res://Assets/Bot Wheel/static idle.png" id="7_w1nwj"]
-[ext_resource type="Texture2D" uid="uid://wkp067wjj82f" path="res://Assets/Bot Wheel/wake.png" id="8_aooml"]
+[ext_resource type="PackedScene" uid="uid://b0srr7w6mq0i8" path="res://scenes/projetil.tscn" id="2_lmfak"]
+[ext_resource type="Texture2D" uid="uid://drv4uxw0o0onc" path="res://assets/Bot Wheel/charge.png" id="3_77tmc"]
+[ext_resource type="Texture2D" uid="uid://cl27onn0vtkvo" path="res://assets/Bot Wheel/GAS dash with FX.png" id="4_v1a2k"]
+[ext_resource type="Texture2D" uid="uid://d3xa1rmykbii3" path="res://assets/Bot Wheel/death.png" id="5_ar8p1"]
+[ext_resource type="Texture2D" uid="uid://ci150bpsy63vp" path="res://assets/Bot Wheel/damaged.png" id="6_fads8"]
+[ext_resource type="Texture2D" uid="uid://cwsk3bdldug2l" path="res://assets/Bot Wheel/static idle.png" id="7_w1nwj"]
+[ext_resource type="Texture2D" uid="uid://wkp067wjj82f" path="res://assets/Bot Wheel/wake.png" id="8_aooml"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3af6e"]
 atlas = ExtResource("3_77tmc")
@@ -312,9 +312,10 @@ animations = [{
 size = Vector2(13, 22)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eofqg"]
-radius = 45.01111
+radius = 155.00322
 
-[node name="Inimigo" type="CharacterBody2D" unique_id=471216763]
+[node name="Inimigo" type="CharacterBody2D" unique_id=471216763 groups=["inimigos"]]
+collision_layer = 10
 script = ExtResource("1_lmfak")
 projectile_scene = ExtResource("2_lmfak")
 
@@ -331,6 +332,8 @@ shape = SubResource("RectangleShape2D_a3cl7")
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=540861875]
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1813654590]
+collision_layer = 6
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=366641632]
 position = Vector2(4, 0)

@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://cd3wkidj46oku"]
 
-[ext_resource type="Texture2D" uid="uid://c3b0pndae1pe8" path="res://Assets/Sprite Sheet/Attack 1.png" id="1_7j5is"]
-[ext_resource type="Texture2D" uid="uid://cpab6lphlf4qp" path="res://Assets/Sprite Sheet/walk.png" id="1_ccptq"]
-[ext_resource type="Script" uid="uid://bdd8wx6k2dhfv" path="res://Scenes/boss_1.gd" id="1_oyem3"]
-[ext_resource type="Texture2D" uid="uid://cykcw0kqxn052" path="res://Assets/Sprite Sheet/Attack 2.png" id="2_oyem3"]
-[ext_resource type="Texture2D" uid="uid://mgccofgnpxgq" path="res://Assets/Sprite Sheet/new/death.png" id="3_bngfi"]
-[ext_resource type="Texture2D" uid="uid://opjspus5o3ky" path="res://Assets/Sprite Sheet/new/end-Attack 3.png" id="4_3ads5"]
-[ext_resource type="Texture2D" uid="uid://bhea0vtmky8tb" path="res://Assets/Sprite Sheet/new/hit.png" id="5_nvfe3"]
-[ext_resource type="Texture2D" uid="uid://d1p61hshwcedo" path="res://Assets/Sprite Sheet/idle.png" id="6_iwuih"]
-[ext_resource type="Texture2D" uid="uid://b53jh0by30342" path="res://Assets/Sprite Sheet/new/mid-Attack 3.png" id="7_wt2fp"]
-[ext_resource type="Texture2D" uid="uid://vu443efdgqin" path="res://Assets/Sprite Sheet/new/Pre-Attack 3.png" id="8_dn2xv"]
+[ext_resource type="Texture2D" uid="uid://c3b0pndae1pe8" path="res://assets/Sprite Sheet/Attack 1.png" id="1_7j5is"]
+[ext_resource type="Texture2D" uid="uid://cpab6lphlf4qp" path="res://assets/Sprite Sheet/walk.png" id="1_ccptq"]
+[ext_resource type="Script" uid="uid://bdd8wx6k2dhfv" path="res://scenes/boss_1.gd" id="1_oyem3"]
+[ext_resource type="Texture2D" uid="uid://cykcw0kqxn052" path="res://assets/Sprite Sheet/Attack 2.png" id="2_oyem3"]
+[ext_resource type="Texture2D" uid="uid://mgccofgnpxgq" path="res://assets/Sprite Sheet/new/death.png" id="3_bngfi"]
+[ext_resource type="Texture2D" uid="uid://opjspus5o3ky" path="res://assets/Sprite Sheet/new/end-Attack 3.png" id="4_3ads5"]
+[ext_resource type="Texture2D" uid="uid://bhea0vtmky8tb" path="res://assets/Sprite Sheet/new/hit.png" id="5_nvfe3"]
+[ext_resource type="Texture2D" uid="uid://d1p61hshwcedo" path="res://assets/Sprite Sheet/idle.png" id="6_iwuih"]
+[ext_resource type="Texture2D" uid="uid://b53jh0by30342" path="res://assets/Sprite Sheet/new/mid-Attack 3.png" id="7_wt2fp"]
+[ext_resource type="Texture2D" uid="uid://vu443efdgqin" path="res://assets/Sprite Sheet/new/Pre-Attack 3.png" id="8_dn2xv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akmgh"]
 atlas = ExtResource("1_7j5is")
@@ -733,15 +733,19 @@ size = Vector2(110, 74)
 [sub_resource type="CircleShape2D" id="CircleShape2D_eofqg"]
 radius = 26.172504
 
-[node name="Boss_1" type="CharacterBody2D" unique_id=1147499109]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbp4"]
+size = Vector2(412, 120)
+
+[node name="Boss_1" type="CharacterBody2D" unique_id=1147499109 groups=["inimigos"]]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_oyem3")
 max_health = 100
 damage = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1496156608]
 sprite_frames = SubResource("SpriteFrames_eofqg")
-animation = &"endAtack"
-frame_progress = 0.50111735
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475500158]
 position = Vector2(-16, 16)
@@ -759,3 +763,11 @@ shape = SubResource("RectangleShape2D_eofqg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashHitbox" unique_id=1645364560]
 position = Vector2(-16, 16)
 shape = SubResource("CircleShape2D_eofqg")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1317265082]
+collision_layer = 6
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1238671990]
+position = Vector2(-35, -14)
+shape = SubResource("RectangleShape2D_cqbp4")

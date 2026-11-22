@@ -23,10 +23,21 @@ extends CharacterBody2D
 @export var invulnerability_duration: float = 0.4
 
 
-@onready var sprite: AnimatedSprite2D = $Sprite2D
+# =========================
+# NÓS
+# =========================
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var blade_hitbox: Area2D = $BladeHitbox
 @onready var dash_hitbox: Area2D = $DashHitbox
+
+@onready var detection_area: Area2D = $DetectionArea
+
+
+# =========================
+# ESTADOS
+# =========================
 
 enum State {
 	IDLE,
@@ -44,6 +55,7 @@ var current_state: State = State.IDLE
 
 var player: CharacterBody2D = null
 
+var active: bool = false
 var health: int
 var dead: bool = false
 
@@ -69,9 +81,11 @@ func _ready() -> void:
 	blade_hitbox.monitoring = false
 	dash_hitbox.monitoring = false
 
-
 	blade_hitbox.body_entered.connect(_on_attack_hit)
 	dash_hitbox.body_entered.connect(_on_attack_hit)
+
+	detection_area.body_entered.connect(_on_body_entered)
+	detection_area.body_exited.connect(_on_body_exited)
 
 	sprite.animation_finished.connect(_on_animation_finished)
 
@@ -79,7 +93,7 @@ func _ready() -> void:
 
 
 # =========================
-# PROCESSAMENTO
+# MOVIMENTAÇÃO E CONTROLE
 # =========================
 
 func _physics_process(delta: float) -> void:
@@ -133,8 +147,8 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	# Sem player
-	if not is_instance_valid(player):
+	# Sem player detectado
+	if not active or not is_instance_valid(player):
 		velocity.x = 0.0
 		_change_state(State.IDLE)
 		move_and_slide()
@@ -162,10 +176,25 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _on_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("player"):
+		return
 
-# =========================
-# ESCOLHA DO ATAQUE
-# =========================
+	player = body
+	active = true
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if body != player:
+		return
+
+	player = null
+	active = false
+	velocity.x = 0.0
+
+	if current_state == State.WALK:
+		_change_state(State.IDLE)
+
 
 func _choose_attack() -> void:
 	already_hit_player = false
@@ -183,10 +212,6 @@ func _choose_attack() -> void:
 			_start_attack3()
 
 
-# =========================
-# ATAQUE 1 - LÂMINA
-# =========================
-
 func _start_attack1() -> void:
 	current_state = State.ATTACK1
 
@@ -194,11 +219,6 @@ func _start_attack1() -> void:
 	dash_hitbox.monitoring = false
 
 	sprite.play("attack1")
-
-
-# =========================
-# ATAQUE 2 - LÂMINA
-# =========================
 
 func _start_attack2() -> void:
 	current_state = State.ATTACK2
@@ -208,10 +228,6 @@ func _start_attack2() -> void:
 
 	sprite.play("attack2")
 
-
-# =========================
-# SPIN DASH
-# =========================
 
 func _start_attack3() -> void:
 	current_state = State.PRE_ATTACK3
@@ -242,7 +258,7 @@ func _start_end_attack3() -> void:
 
 	velocity.x = 0.0
 
-	# Primeiro quadro: dash ainda ativo
+	# Primeiro momento: dash ainda ativo
 	dash_hitbox.monitoring = true
 	blade_hitbox.monitoring = false
 
@@ -254,16 +270,11 @@ func _start_end_attack3() -> void:
 func _end_attack3_update(delta: float) -> void:
 	end_blade_timer -= delta
 
-	# Depois do primeiro momento da finalização,
-	# troca a colisão do dash pela da lâmina
+	# Troca dash pela lâmina após o delay
 	if end_blade_timer <= 0.0:
 		dash_hitbox.monitoring = false
 		blade_hitbox.monitoring = true
 
-
-# =========================
-# FINALIZAÇÃO DAS ANIMAÇÕES
-# =========================
 
 func _on_animation_finished() -> void:
 	if dead:
@@ -333,12 +344,9 @@ func take_damage(amount: int = 1) -> void:
 	sprite.play("hit")
 
 
-# =========================
-# MORTE
-# =========================
-
 func _die() -> void:
 	dead = true
+	active = false
 	current_state = State.DEATH
 
 	velocity = Vector2.ZERO
@@ -347,11 +355,6 @@ func _die() -> void:
 	dash_hitbox.monitoring = false
 
 	sprite.play("death")
-
-
-# =========================
-# COLISÃO DOS ATAQUES
-# =========================
 
 func _on_attack_hit(body: Node2D) -> void:
 	if dead or already_hit_player:
@@ -365,6 +368,7 @@ func _on_attack_hit(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 
+
 func _return_to_normal() -> void:
 	if dead:
 		return
@@ -372,11 +376,7 @@ func _return_to_normal() -> void:
 	blade_hitbox.monitoring = false
 	dash_hitbox.monitoring = false
 
-	if is_instance_valid(player):
-		_change_state(State.IDLE)
-	else:
-		_change_state(State.IDLE)
-
+	_change_state(State.IDLE)
 
 func _change_state(new_state: State) -> void:
 	if current_state == new_state:
