@@ -8,7 +8,7 @@ func _ready() -> void:
 	$"../MenuScreen/VBoxContainer/Play".grab_focus()
 
 func _on_play_pressed() -> void:
-	SceneManager.changeSceneTo(game_scene, "CircleToon")
+	SceneManager.changeSceneTo(game_scene)
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

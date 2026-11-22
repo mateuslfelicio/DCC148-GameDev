@@ -6,7 +6,6 @@
 bg_color = Color(0.6, 0.6, 0.6, 0.5882353)
 
 [node name="PauseMenu" type="Control" unique_id=446523832]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

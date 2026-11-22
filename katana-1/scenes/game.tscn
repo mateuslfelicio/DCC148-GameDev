@@ -2648,11 +2648,10 @@ enemy_scene = ExtResource("2_1l0tm")
 boss_scene = ExtResource("3_ldgsr")
 
 [node name="PauseMenu" parent="." unique_id=446523832 instance=ExtResource("10_ldgsr")]
+visible = false
 z_index = 2
 offset_right = 480.0
 offset_bottom = 270.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="BaseColor" type="Sprite2D" parent="." unique_id=14661286]
 position = Vector2(2525, 318.99997)
