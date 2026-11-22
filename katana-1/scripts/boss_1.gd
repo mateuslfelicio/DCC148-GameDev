@@ -455,6 +455,7 @@ func _on_animation_finished() -> void:
 			# Durante o dash o boss atravessa o jogador (sem empurrar), mas o dano continua
 			_set_dash_ghost(true)
 
+			Sfx.play_at(&"boss_spin_dash", global_position, -4.0)
 			sprite.play("midAtack")
 
 		State.MID_ATTACK3:
@@ -515,6 +516,9 @@ func _update_boxes() -> void:
 	if window != hit_window:
 		hit_window = window
 		hitbox.new_window()
+		# Golpes de lamina tem som proprio; o dash ja tocou o dele ao comecar
+		if strike.size == blade_rect.size:
+			Sfx.play_at(&"boss_attack", global_position)
 
 	hitbox.damage = damage
 
@@ -581,6 +585,9 @@ func take_hit(_source_x: float, amount: int = 1) -> bool:
 	health_changed.emit(health, max_health)
 	invulnerability_timer = invulnerability_duration
 
+	if health > 0:
+		Sfx.play_at(&"boss_hurt", global_position)
+
 	if health <= 0:
 		_die()
 		return true
@@ -620,6 +627,7 @@ func _die() -> void:
 	hitbox.clear()
 	hurtbox.set_rect(Rect2(), facing)
 
+	Sfx.play_at(&"boss_death", global_position)
 	sprite.play("death")
 	died.emit()
 

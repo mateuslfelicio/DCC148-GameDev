@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneManager="*uid://ddhxgou41ft2"
 Transition="*uid://dm0afdgxy7mj6"
+Sfx="*res://scripts/sfx.gd"
 
 [display]
 

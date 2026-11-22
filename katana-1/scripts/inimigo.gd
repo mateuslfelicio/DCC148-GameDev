@@ -214,6 +214,7 @@ func _on_shoot_timer_timeout() -> void:
 
 	var projectile = projectile_scene.instantiate()
 	get_tree().current_scene.add_child(projectile)
+	Sfx.play_at(&"enemy_shoot", shoot_point.global_position)
 	projectile.global_position = shoot_point.global_position
 
 	var direction: Vector2 = (
@@ -237,6 +238,7 @@ func take_hit(_source_x: float, amount: int = 1) -> bool:
 
 	health -= amount
 	invulnerability_timer = hit_invulnerability
+	Sfx.play_at(&"enemy_hurt", global_position)
 
 	if health <= 0:
 		die()
@@ -285,6 +287,7 @@ func take_damage(amount: int = 1) -> void:
 
 func die() -> void:
 	dead = true
+	Sfx.play_at(&"enemy_death", global_position)
 	active = false
 	is_hit = false
 

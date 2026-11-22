@@ -242,6 +242,7 @@ func _end_tired() -> void:
 
 func _start_roar() -> void:
 	state = State.ROAR
+	Sfx.play_at(&"boss_roar", global_position)
 	state_timer = roar_time
 	_play(&"idle", 0.0)
 
@@ -357,6 +358,7 @@ func _update_boxes() -> void:
 	if window != hit_window:
 		hit_window = window
 		hitbox.new_window()
+		Sfx.play_at(&"boss_attack", global_position)
 	hitbox.damage = ATTACKS[sprite.animation]["damage"]
 	var rects: Array[Rect2] = []
 	rects.assign(Data.STRIKES[sprite.animation][sprite.frame])
@@ -375,9 +377,12 @@ func take_hit(_source_x: float, amount := 1) -> bool:
 	flash_timer = 0.1
 	if health <= 0:
 		state = State.DEAD
+		Sfx.play_at(&"boss_death", global_position)
 		_play(&"death")
 		died.emit()
-	elif not phase_2 and health * 2 <= max_health:
+		return true
+	Sfx.play_at(&"boss_hurt", global_position)
+	if not phase_2 and health * 2 <= max_health:
 		phase_2 = true
 		_start_roar() # interrompe o que estiver fazendo
 	return true
