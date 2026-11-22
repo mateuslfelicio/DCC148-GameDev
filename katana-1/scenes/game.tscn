@@ -2718,6 +2718,8 @@ shape = SubResource("RectangleShape2D_eofqg")
 
 [node name="LeftWall" type="StaticBody2D" parent="." unique_id=90506628]
 position = Vector2(2038, 550)
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=559201341]
 position = Vector2(2, -5)
@@ -2725,6 +2727,8 @@ shape = SubResource("RectangleShape2D_cqbp4")
 
 [node name="RightWall" type="StaticBody2D" parent="." unique_id=1261922321]
 position = Vector2(2616, 548)
+collision_layer = 0
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_eofqg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=226014473]

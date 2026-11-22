@@ -728,11 +728,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn2xv"]
-size = Vector2(16, 42.5)
+size = Vector2(25, 53.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hsuw"]
 resource_local_to_scene = true
-size = Vector2(16.5, 42)
+size = Vector2(25, 53)
 
 [node name="Boss_1" type="CharacterBody2D" unique_id=1147499109 groups=["inimigos"]]
 collision_layer = 5
@@ -743,10 +743,10 @@ max_health = 100
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1496156608]
 sprite_frames = SubResource("SpriteFrames_eofqg")
 animation = &"atack2"
-frame_progress = 0.33868778
+frame_progress = 0.068493366
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475500158]
-position = Vector2(-18, 22.25)
+position = Vector2(-17.5, 16.75)
 shape = SubResource("RectangleShape2D_dn2xv")
 
 [node name="HitboxDebug" type="Node2D" parent="." unique_id=234414842]
@@ -759,7 +759,7 @@ monitoring = false
 script = ExtResource("11_3b75m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=102131048]
-position = Vector2(-18.25, 22)
+position = Vector2(-17.5, 16.5)
 shape = SubResource("RectangleShape2D_0hsuw")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=2118987264]

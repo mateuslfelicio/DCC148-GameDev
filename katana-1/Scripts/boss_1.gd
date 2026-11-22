@@ -11,6 +11,11 @@ extends CharacterBody2D
 signal health_changed(current: int, maximum: int)
 signal died
 
+
+# =========================
+# CONFIGURAÇÕES
+# =========================
+
 @export var speed: float = 80.0
 @export var gravity: float = 980.0
 
@@ -41,9 +46,18 @@ signal died
 ## O Hurtbox/Hitbox espelham sozinhos quando o boss vira. Ajuste vendo
 ## Depuração > Formas de colisão visíveis.
 @export var body_rect: Rect2 = Rect2(-20, -40, 40, 80)
-@export var blade_rect: Rect2 = Rect2(18, -10, 40, 42)
+@export var blade_rect: Rect2 = Rect2(6, -10, 40, 42)
 @export var dash_rect: Rect2 = Rect2(-24, -14, 40, 48)
+## Desloca TODOS os retângulos de uma vez (olhando para a direita; o x é espelhado
+## junto com o boss). Use para alinhar as áreas com o desenho do boss.
+@export var rect_offset: Vector2 = Vector2.ZERO
+## Desenha o contorno do que o script envia: azul = corpo, vermelho = golpe.
+@export var debug_draw: bool = true
 
+
+# =========================
+# JANELAS DE DANO
+# =========================
 
 ## Intervalos de quadros (inclusivos) em que a lâmina causa dano. Cada intervalo acerta
 ## uma vez só. O -1 no fim significa "até o último quadro da animação".
@@ -65,6 +79,11 @@ const LOOP_ANIMATIONS: Array[StringName] = [&"idle", &"walk"]
 ## Folga além da duração da animação antes do plano B encerrar o ataque.
 const FAILSAFE_MARGIN := 0.25
 
+
+# =========================
+# NÓS
+# =========================
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var hurtbox: Hurtbox = $Hurtbox
@@ -72,6 +91,10 @@ const FAILSAFE_MARGIN := 0.25
 
 @onready var target: Node2D = get_tree().get_first_node_in_group("player")
 
+
+# =========================
+# ESTADOS
+# =========================
 
 enum State {
 	IDLE,
@@ -110,6 +133,17 @@ var facing: float = 1.0
 # Intervalo de dano atual (cada um acerta o jogador uma vez)
 var hit_window: int = -1
 
+# Retângulos enviados no último frame (só para o desenho de depuração)
+var _debug_body: Rect2 = Rect2()
+var _debug_strike: Rect2 = Rect2()
+
+# Jogador com quem a colisão física está desligada durante o dash
+var _ghost_body: PhysicsBody2D = null
+
+
+# =========================
+# INICIALIZAÇÃO
+# =========================
 
 func _ready() -> void:
 	health = max_health
@@ -139,6 +173,11 @@ func _setup_animations() -> void:
 		if frames.has_animation(anim):
 			frames.set_animation_loop(anim, true)
 
+
+# =========================
+# LOOP PRINCIPAL
+# =========================
+
 func _physics_process(delta: float) -> void:
 	if dead:
 		return
@@ -146,6 +185,11 @@ func _physics_process(delta: float) -> void:
 	_update_target()
 	_run_state(delta)
 	_update_boxes()
+
+
+# =========================
+# VISÃO DO JOGADOR
+# =========================
 
 ## Começa a luta quando o jogador chega a aggro_range. Depois disso o boss persegue
 ## sempre. Se o jogador morrer, o boss para.
@@ -174,12 +218,22 @@ func _target_dead() -> bool:
 
 	return target.has_method("is_dead") and target.is_dead()
 
+
+# =========================
+# VIRAR O BOSS
+# =========================
+
 func _face(direction: float) -> void:
 	if direction == 0.0:
 		return
 
 	facing = signf(direction)
 	sprite.flip_h = facing < 0.0
+
+
+# =========================
+# MOVIMENTAÇÃO E CONTROLE
+# =========================
 
 func _run_state(delta: float) -> void:
 	# Gravidade
@@ -277,6 +331,11 @@ func _check_failsafe(delta: float) -> void:
 	or current_state == State.END_ATTACK3:
 		_on_animation_finished()
 
+
+# =========================
+# ESCOLHA DO ATAQUE
+# =========================
+
 func _choose_attack() -> void:
 	hit_window = -1
 
@@ -322,6 +381,11 @@ func _anim_length(anim: StringName) -> float:
 
 	return total / fps / maxf(sprite.speed_scale, 0.01)
 
+
+# =========================
+# SPIN DASH
+# =========================
+
 func _start_attack3() -> void:
 	current_state = State.PRE_ATTACK3
 
@@ -363,6 +427,11 @@ func _start_end_attack3() -> void:
 func _end_attack3_update(delta: float) -> void:
 	end_blade_timer -= delta
 
+
+# =========================
+# FINALIZAÇÃO DAS ANIMAÇÕES
+# =========================
+
 func _on_animation_finished() -> void:
 	if dead:
 		if sprite.animation == "death":
@@ -383,6 +452,9 @@ func _on_animation_finished() -> void:
 
 			_update_dash_direction()
 
+			# Durante o dash o boss atravessa o jogador (sem empurrar), mas o dano continua
+			_set_dash_ghost(true)
+
 			sprite.play("midAtack")
 
 		State.MID_ATTACK3:
@@ -395,13 +467,19 @@ func _on_animation_finished() -> void:
 		State.HIT:
 			_return_to_normal()
 
+
+# =========================
+# COLISÃO (HURTBOX / HITBOX)
+# =========================
+
 ## Copia as áreas do momento atual para os nós de colisão: o corpo vai para o Hurtbox
 ## (desligado quando morto) e, durante os golpes, a área do golpe vai para o Hitbox.
 func _update_boxes() -> void:
 	var body := Rect2()
 	if not dead:
-		body = body_rect
+		body = _shifted(body_rect)
 	hurtbox.set_rect(body, facing)
+	_debug_body = body
 
 	var window: int = -1
 	var strike: Rect2 = Rect2()
@@ -412,8 +490,8 @@ func _update_boxes() -> void:
 			window = _window_index(sprite.animation, sprite.frame)
 			strike = blade_rect
 
-		# Spin Dash: o corpo todo machuca
-		State.PRE_ATTACK3, State.MID_ATTACK3:
+		# Spin Dash: só machuca durante a investida (a preparação é o aviso)
+		State.MID_ATTACK3:
 			window = 0
 			strike = dash_rect
 
@@ -428,7 +506,11 @@ func _update_boxes() -> void:
 
 	if window == -1:
 		hitbox.clear()
+		_debug_strike = Rect2()
+		queue_redraw()
 		return
+
+	strike = _shifted(strike)
 
 	if window != hit_window:
 		hit_window = window
@@ -438,6 +520,34 @@ func _update_boxes() -> void:
 
 	var rects: Array[Rect2] = [strike]
 	hitbox.set_rects(rects, facing)
+
+	_debug_strike = strike
+	queue_redraw()
+
+
+## Aplica o rect_offset a um retângulo.
+func _shifted(rect: Rect2) -> Rect2:
+	return Rect2(rect.position + rect_offset, rect.size)
+
+
+## Contorno do que o script está enviando para o Hurtbox/Hitbox.
+## Se isto não bater com as formas de colisão do Godot, o problema está nos
+## nós Hurtbox/Hitbox; se bater mas não cobrir o desenho, ajuste os retângulos.
+func _draw() -> void:
+	if not debug_draw:
+		return
+
+	if _debug_body.has_area():
+		draw_rect(_mirrored(_debug_body), Color(0.2, 0.5, 1.0), false, 1.0)
+
+	if _debug_strike.has_area():
+		draw_rect(_mirrored(_debug_strike), Color(1.0, 0.2, 0.2), false, 1.0)
+
+
+func _mirrored(rect: Rect2) -> Rect2:
+	if facing < 0.0:
+		return Rect2(-rect.position.x - rect.size.x, rect.position.y, rect.size.x, rect.size.y)
+	return rect
 
 
 ## Em qual janela de dano da lâmina o quadro atual está (-1 se em nenhuma).
@@ -453,6 +563,11 @@ func _window_index(anim: StringName, frame: int) -> int:
 			return i
 
 	return -1
+
+
+# =========================
+# RECEBER DANO
+# =========================
 
 ## Chamado pelo Hurtbox quando um golpe do jogador acerta. Retorna true se causou dano.
 func take_hit(_source_x: float, amount: int = 1) -> bool:
@@ -473,6 +588,7 @@ func take_hit(_source_x: float, amount: int = 1) -> bool:
 	current_state = State.HIT
 	hit_timer = hit_duration
 	failsafe_timer = 0.0
+	_set_dash_ghost(false)
 
 	# Ataque interrompido: não deixa o boss atacar de novo na hora
 	attack_timer = maxf(attack_timer, hit_attack_delay)
@@ -487,11 +603,17 @@ func take_hit(_source_x: float, amount: int = 1) -> bool:
 func take_damage(amount: int = 1) -> void:
 	take_hit(global_position.x, amount)
 
+
+# =========================
+# MORTE
+# =========================
+
 func _die() -> void:
 	dead = true
 	active = false
 	current_state = State.DEATH
 	failsafe_timer = 0.0
+	_set_dash_ghost(false)
 
 	velocity = Vector2.ZERO
 
@@ -507,6 +629,7 @@ func _return_to_normal() -> void:
 		return
 
 	failsafe_timer = 0.0
+	_set_dash_ghost(false)
 	_change_state(State.IDLE)
 
 
@@ -522,3 +645,31 @@ func _change_state(new_state: State) -> void:
 
 		State.WALK:
 			sprite.play("walk")
+
+
+## Liga/desliga a colisão física entre o boss e o jogador. Com ela desligada o boss
+## atravessa o jogador no dash e não o empurra. O dano não é afetado, pois vem das
+## áreas Hurtbox/Hitbox.
+func _set_dash_ghost(enabled: bool) -> void:
+	if enabled:
+		if _ghost_body != null:
+			return
+
+		var body := target as PhysicsBody2D
+		if body == null:
+			return
+
+		_ghost_body = body
+		add_collision_exception_with(_ghost_body)
+		_ghost_body.add_collision_exception_with(self)
+		return
+
+	if is_instance_valid(_ghost_body):
+		remove_collision_exception_with(_ghost_body)
+		_ghost_body.remove_collision_exception_with(self)
+
+	_ghost_body = null
+
+
+func _exit_tree() -> void:
+	_set_dash_ghost(false)
