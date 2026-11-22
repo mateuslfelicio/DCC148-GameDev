@@ -14,6 +14,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_resume_pressed() -> void:
 	visible = false
+	var scene = load("res://Scenes/game.tscn")
+	SceneManager.changeSceneTo(scene)
 
 func _on_quit_pressed() -> void:
 	visible = false
