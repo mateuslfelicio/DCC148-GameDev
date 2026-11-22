@@ -1,17 +1,18 @@
 [gd_scene format=4 uid="uid://bf2bwudgqdykg"]
 
-[ext_resource type="Script" uid="uid://c7mg53ly4djtm" path="res://Scripts/game.gd" id="1_v158k"]
-[ext_resource type="PackedScene" uid="uid://onox53h8bxxg" path="res://Scenes/inimigo.tscn" id="2_1l0tm"]
+[ext_resource type="Script" uid="uid://c7mg53ly4djtm" path="res://scripts/game.gd" id="1_v158k"]
+[ext_resource type="PackedScene" uid="uid://onox53h8bxxg" path="res://scenes/inimigo.tscn" id="2_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://bs56y6464lm7l" path="res://assets/Background/Background/Base Color.png" id="3_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://cd3wkidj46oku" path="res://Scenes/boss_1.tscn" id="3_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://cd3wkidj46oku" path="res://scenes/boss_1.tscn" id="3_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://oh8shsvf4ufe" path="res://scenes/boss.tscn" id="4_dinhu"]
 [ext_resource type="Texture2D" uid="uid://5k0hyskx1jrd" path="res://assets/Background/Assets/Buildings.png" id="4_ldgsr"]
-[ext_resource type="PackedScene" path="res://Scenes/hud.tscn" id="4_rku1e"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_rku1e"]
 [ext_resource type="Texture2D" uid="uid://d35wskfa03drt" path="res://assets/Background/Assets/Props-01.png" id="5_o5yvi"]
 [ext_resource type="Texture2D" uid="uid://b0datk50aexug" path="res://assets/Background/Assets/Tiles.png" id="6_rku1e"]
 [ext_resource type="Texture2D" uid="uid://dbj5nfvdyskpq" path="res://assets/Background/Background/Background Props.png" id="7_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://b2iwydrh54m5r" path="res://assets/sans.png" id="8_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://dr482wrero7wm" path="res://Scenes/pause_menu.tscn" id="10_ldgsr"]
-[ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dr482wrero7wm" path="res://scenes/pause_menu.tscn" id="10_ldgsr"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="10_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0urt"]
 texture = ExtResource("4_ldgsr")
@@ -2648,6 +2649,8 @@ size = Vector2(18, 227)
 script = ExtResource("1_v158k")
 enemy_scene = ExtResource("2_1l0tm")
 boss_scene = ExtResource("3_ldgsr")
+boss_scene2 = ExtResource("4_dinhu")
+spawn_cooldown = 5.0
 
 [node name="HUD" parent="." unique_id=252084998 instance=ExtResource("4_rku1e")]
 
@@ -2704,7 +2707,7 @@ position = Vector2(344, 512)
 position = Vector2(2494, 636)
 
 [node name="Player" parent="." unique_id=1927095454 instance=ExtResource("10_vtaks")]
-position = Vector2(3467, 494)
+position = Vector2(68, 646)
 jump_velocity = -300.0
 double_jump_velocity = -250.0
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lmq6h7fccf1y"]
 
-[ext_resource type="PackedScene" uid="uid://dr482wrero7wm" path="res://Scenes/pause_menu.tscn" id="1_a085y"]
+[ext_resource type="PackedScene" uid="uid://dr482wrero7wm" path="res://scenes/pause_menu.tscn" id="1_a085y"]
 [ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://icon.svg" id="2_ya3d7"]
 
 [node name="Teste" type="Node" unique_id=199287909]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ceme2yuxdc245"]
 
 [ext_resource type="Script" uid="uid://c8boobnwj2y60" path="res://scripts/player.gd" id="1_script"]
-[ext_resource type="SpriteFrames" uid="uid://dl0nnpnacqifq" path="res://Scenes/player_frames.tres" id="2_frames"]
+[ext_resource type="SpriteFrames" uid="uid://dl0nnpnacqifq" path="res://scenes/player_frames.tres" id="2_frames"]
 [ext_resource type="Script" uid="uid://cbcq2fs3e6td7" path="res://scripts/hitbox_debug.gd" id="3_debug"]
 [ext_resource type="Script" uid="uid://cyn6ubwuwr4gl" path="res://scripts/hurtbox.gd" id="4_hurtbox"]
 [ext_resource type="Script" uid="uid://cucxgqqf3si0e" path="res://scripts/hitbox.gd" id="5_hitbox"]

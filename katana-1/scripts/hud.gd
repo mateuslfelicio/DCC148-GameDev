@@ -34,7 +34,7 @@ func _update_invincible_text(enabled: bool) -> void:
 
 
 func _call_defeat() -> void:
-	var scene = load("res://Scenes/defeat_screen.tscn")
+	var scene = load("res://scenes/defeat_screen.tscn")
 	print(scene)
 	
 	SceneManager.changeSceneTo(scene)
