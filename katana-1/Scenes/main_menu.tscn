@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://5vwddrer4cim"]
+
+[ext_resource type="Script" uid="uid://b00vokjcoeohv" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="PackedScene" uid="uid://lmq6h7fccf1y" path="res://Scenes/Teste.tscn" id="2_48xlc"]
+
+[node name="MainMenu" type="Control" unique_id=1858009167]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Node" type="Node" parent="." unique_id=1639770355]
+script = ExtResource("1_28flt")
+game_scene = ExtResource("2_48xlc")
+
+[node name="MenuScreen" type="Control" parent="." unique_id=480729580]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuScreen" unique_id=1112464827]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 70.0
+offset_bottom = 93.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 60
+text = "Game Title"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuScreen" unique_id=112713789]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -104.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Play" type="Button" parent="MenuScreen/VBoxContainer" unique_id=566006856]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="Controls" type="Button" parent="MenuScreen/VBoxContainer" unique_id=1026130778]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Controls"
+
+[node name="Quit" type="Button" parent="MenuScreen/VBoxContainer" unique_id=1969160216]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="ControlsMenu" type="Control" parent="." unique_id=1677327387]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlsTitle" type="RichTextLabel" parent="ControlsMenu" unique_id=435970803]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 70.0
+offset_bottom = 93.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 60
+text = "Controls"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ControlsResume" type="RichTextLabel" parent="ControlsMenu" unique_id=171214181]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Left - Left Arrow
+Right - Right Arrow
+Up - Up Arrow
+Down - Down Arrow
+Jump - Z
+Double Jump - Z
+Hit - X
+Dash - C
+Counter - F"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlsMenu" unique_id=1235131368]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Return" type="Button" parent="ControlsMenu/VBoxContainer" unique_id=1489213976]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Return"
+
+[connection signal="pressed" from="MenuScreen/VBoxContainer/Play" to="Node" method="_on_play_pressed"]
+[connection signal="pressed" from="MenuScreen/VBoxContainer/Controls" to="Node" method="_on_controls_pressed"]
+[connection signal="pressed" from="MenuScreen/VBoxContainer/Quit" to="Node" method="_on_quit_pressed"]
+[connection signal="pressed" from="ControlsMenu/VBoxContainer/Return" to="Node" method="_on_return_pressed"]

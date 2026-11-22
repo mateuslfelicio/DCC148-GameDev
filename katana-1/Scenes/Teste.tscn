@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://lmq6h7fccf1y"]
+
+[ext_resource type="PackedScene" uid="uid://dr482wrero7wm" path="res://Scenes/pause_menu.tscn" id="1_a085y"]
+[ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://icon.svg" id="2_ya3d7"]
+
+[node name="Teste" type="Node" unique_id=199287909]
+
+[node name="PauseMenu" parent="." unique_id=446523832 instance=ExtResource("1_a085y")]
+z_index = 1
+
+[node name="Node2D" type="Node2D" parent="." unique_id=512235975]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1495557288]
+position = Vector2(544, 354)
+texture = ExtResource("2_ya3d7")
