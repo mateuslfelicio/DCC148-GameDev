@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5vwddrer4cim"]
 
 [ext_resource type="Script" uid="uid://b00vokjcoeohv" path="res://scripts/main_menu.gd" id="1_28flt"]
-[ext_resource type="PackedScene" uid="uid://bf2bwudgqdykg" path="res://scenes/game.tscn" id="2_48xlc"]
+[ext_resource type="PackedScene" uid="uid://bf2bwudgqdykg" path="res://Scenes/game.tscn" id="2_48xlc"]
 
 [node name="MainMenu" type="Control" unique_id=1858009167]
 layout_mode = 3
@@ -33,7 +33,7 @@ offset_top = 35.0
 offset_bottom = 77.0
 grow_horizontal = 2
 theme_override_font_sizes/normal_font_size = 30
-text = "Game Title"
+text = "Katana -1"
 fit_content = true
 horizontal_alignment = 1
 
@@ -104,7 +104,9 @@ Double Jump - W
 Counter -D
 Hit - J
 Charge Hit - K
-Dash - L"
+Dash - L
+Self Damage  - H
+Invencible  - I"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1

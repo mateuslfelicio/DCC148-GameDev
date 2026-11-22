@@ -2707,7 +2707,7 @@ position = Vector2(344, 512)
 position = Vector2(2494, 636)
 
 [node name="Player" parent="." unique_id=1927095454 instance=ExtResource("10_vtaks")]
-position = Vector2(4230, 648)
+position = Vector2(2103, 384)
 jump_velocity = -300.0
 double_jump_velocity = -250.0
 
