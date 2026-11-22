@@ -4,7 +4,7 @@ extends Node2D
 @export var boss_scene: PackedScene
 
 @export var spawn_cooldown: float = 3.0
-@export var max_enemies: int = 5
+@export var max_enemies: int = 4
 
 @onready var spawn_points: Array[Marker2D] = [
 	$Spawn1,

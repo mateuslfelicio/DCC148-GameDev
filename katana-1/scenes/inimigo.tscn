@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ci150bpsy63vp" path="res://assets/Bot Wheel/damaged.png" id="6_fads8"]
 [ext_resource type="Texture2D" uid="uid://cwsk3bdldug2l" path="res://assets/Bot Wheel/static idle.png" id="7_w1nwj"]
 [ext_resource type="Texture2D" uid="uid://wkp067wjj82f" path="res://assets/Bot Wheel/wake.png" id="8_aooml"]
+[ext_resource type="Script" uid="uid://cyn6ubwuwr4gl" path="res://scripts/hurtbox.gd" id="9_rmr57"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3af6e"]
 atlas = ExtResource("3_77tmc")
@@ -312,10 +313,15 @@ animations = [{
 size = Vector2(13, 22)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eofqg"]
-radius = 155.00322
+radius = 112.0714
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dgd2"]
+resource_local_to_scene = true
+size = Vector2(14.5, 21)
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=471216763 groups=["inimigos"]]
-collision_layer = 10
+collision_layer = 27
+collision_mask = 27
 script = ExtResource("1_lmfak")
 projectile_scene = ExtResource("2_lmfak")
 
@@ -332,9 +338,19 @@ shape = SubResource("RectangleShape2D_a3cl7")
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=540861875]
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1813654590]
-collision_layer = 6
-collision_mask = 2
+collision_layer = 22
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=366641632]
 position = Vector2(4, 0)
 shape = SubResource("CircleShape2D_eofqg")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1754924238]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("9_rmr57")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1183081125]
+position = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_0dgd2")
