@@ -6,6 +6,7 @@ enum State { MOVE, DASH, ATTACK, BLOCK, HURT, DEAD }
 
 signal health_changed(current: int, maximum: int)
 signal died
+signal invincible_changed(enabled: bool)
 
 ## Area de cada golpe, relativa aos pes, olhando para a direita (medida nos pixels
 ## azuis/vermelhos dos sprites). Vira o retangulo de colisao do no Hitbox durante os
@@ -76,6 +77,8 @@ var combo_queued := false
 var invulnerable_timer := 0.0
 ## Janela de golpe atual (cada uma acerta o mesmo inimigo uma vez).
 var hit_window := -1
+## Modo invencivel (liga/desliga com a tecla I ou o botao do HUD): nenhum golpe causa dano.
+var invincible := false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Hitbox = $Hitbox
@@ -252,6 +255,9 @@ func _start_combo(index: int) -> void:
 func take_hit(source_x: float, damage := 1) -> bool:
 	if state == State.DEAD or state == State.DASH or invulnerable_timer > 0.0:
 		return false
+	# Invencivel: o golpe e consumido, mas nao causa dano nem empurrao.
+	if invincible:
+		return true
 	var hit_dir := signf(source_x - global_position.x)
 	if hit_dir == 0.0:
 		hit_dir = facing
@@ -283,6 +289,18 @@ func take_hit(source_x: float, damage := 1) -> bool:
 
 func is_dead() -> bool:
 	return state == State.DEAD
+
+
+## Alterna entre o modo invencivel e o estado normal.
+func toggle_invincible() -> void:
+	set_invincible(not invincible)
+
+
+func set_invincible(enabled: bool) -> void:
+	if invincible == enabled:
+		return
+	invincible = enabled
+	invincible_changed.emit(invincible)
 
 
 # ---------------------------------------------------------------- combate
@@ -389,8 +407,10 @@ func _apply_gravity(delta: float) -> void:
 
 # ---------------------------------------------------------------- debug
 
-## H = leva um golpe vindo da frente, R = reinicia a cena.
+## H = leva um golpe vindo da frente, R = reinicia a cena, I = liga/desliga invencivel.
 func _handle_debug_keys() -> void:
+	if Input.is_action_just_pressed("toggle_invincible"):
+		toggle_invincible()
 	if Input.is_action_just_pressed("debug_hit"):
 		take_hit(global_position.x + facing * 10.0)
 	if Input.is_action_just_pressed("debug_restart"):

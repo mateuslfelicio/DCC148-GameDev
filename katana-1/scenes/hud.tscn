@@ -36,6 +36,17 @@ step = 1.0
 value = 5.0
 show_percentage = false
 
+[node name="InvincibleButton" type="Button" parent="." unique_id=1938274651]
+visible = false
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 88.0
+offset_bottom = 38.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 8
+toggle_mode = true
+text = "Invencivel: ON"
+
 [node name="BossName" type="Label" parent="." unique_id=1815380472]
 anchors_preset = 7
 anchor_left = 0.5
