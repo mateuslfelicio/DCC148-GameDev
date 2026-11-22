@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cd3wkidj46oku" path="res://scenes/boss_1.tscn" id="3_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://oh8shsvf4ufe" path="res://scenes/boss.tscn" id="4_dinhu"]
 [ext_resource type="Texture2D" uid="uid://5k0hyskx1jrd" path="res://assets/Background/Assets/Buildings.png" id="4_ldgsr"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_rku1e"]
+[ext_resource type="PackedScene" uid="uid://ykas2jabk6gm" path="res://scenes/hud.tscn" id="4_rku1e"]
 [ext_resource type="Texture2D" uid="uid://d35wskfa03drt" path="res://assets/Background/Assets/Props-01.png" id="5_o5yvi"]
 [ext_resource type="Texture2D" uid="uid://b0datk50aexug" path="res://assets/Background/Assets/Tiles.png" id="6_rku1e"]
 [ext_resource type="Texture2D" uid="uid://dbj5nfvdyskpq" path="res://assets/Background/Background/Background Props.png" id="7_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://b2iwydrh54m5r" path="res://assets/sans.png" id="8_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dr482wrero7wm" path="res://scenes/pause_menu.tscn" id="10_ldgsr"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://ceme2yuxdc245" path="res://scenes/player.tscn" id="10_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0urt"]
 texture = ExtResource("4_ldgsr")
@@ -2707,7 +2707,7 @@ position = Vector2(344, 512)
 position = Vector2(2494, 636)
 
 [node name="Player" parent="." unique_id=1927095454 instance=ExtResource("10_vtaks")]
-position = Vector2(68, 646)
+position = Vector2(3809, 638)
 jump_velocity = -300.0
 double_jump_velocity = -250.0
 
