@@ -16,6 +16,8 @@ extends CharacterBody2D
 ## sprites (tools/build_boss_data.py). A cada quadro elas viram os retangulos de colisao
 ## dos nos Hurtbox (corpo) e Hitbox (golpe); a fisica do Godot detecta os acertos.
 
+const DEFEAT_DELAY := 1.2
+
 signal health_changed(current: int, maximum: int)
 signal died
 
@@ -439,3 +441,8 @@ static func _window_index(windows: Array, frame: int) -> int:
 		if frame >= windows[i].x and frame <= windows[i].y:
 			return i
 	return -1
+
+
+func _on_died() -> void:
+	await get_tree().create_timer(DEFEAT_DELAY).timeout
+	SceneManager.changeSceneTo(load("res://scenes/defeat_screen.tscn"))

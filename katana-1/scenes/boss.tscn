@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://oh8shsvf4ufe"]
 
-[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_hurtbox"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_hitbox"]
 [ext_resource type="Script" uid="uid://daiadgld732td" path="res://scripts/boss.gd" id="1_script"]
-[ext_resource type="SpriteFrames" path="res://scenes/boss_frames.tres" id="2_frames"]
+[ext_resource type="SpriteFrames" uid="uid://bbfkll8wunp8i" path="res://scenes/boss_frames.tres" id="2_frames"]
 [ext_resource type="Script" uid="uid://cbcq2fs3e6td7" path="res://scripts/hitbox_debug.gd" id="3_debug"]
+[ext_resource type="Script" uid="uid://cyn6ubwuwr4gl" path="res://scripts/hurtbox.gd" id="4_hurtbox"]
+[ext_resource type="Script" uid="uid://cucxgqqf3si0e" path="res://scripts/hitbox.gd" id="5_hitbox"]
 
 [sub_resource type="RectangleShape2D" id="shape"]
 size = Vector2(24, 66)
@@ -30,18 +30,20 @@ shape = SubResource("shape")
 [node name="HitboxDebug" type="Node2D" parent="." unique_id=197918188]
 script = ExtResource("3_debug")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=521955538]
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("4_hurtbox")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1752060700]
 position = Vector2(0, -34)
 shape = SubResource("hurt_shape")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1353006821]
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 script = ExtResource("5_hitbox")
+
+[connection signal="died" from="." to="." method="_on_died"]

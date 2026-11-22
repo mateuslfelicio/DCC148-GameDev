@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs4hwiarkolge"
-path="res://.godot/imported/Background Props.png-16fd4b308dc9d6824b5c4d41d6b82d30.ctex"
+path="res://.godot/imported/Background Props.png-3b157b69def71d2c4b07ee2f3dc659cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background/Social/Background Props.png"
-dest_files=["res://.godot/imported/Background Props.png-16fd4b308dc9d6824b5c4d41d6b82d30.ctex"]
+source_file="res://Assets/Background/Social/Background Props.png"
+dest_files=["res://.godot/imported/Background Props.png-3b157b69def71d2c4b07ee2f3dc659cb.ctex"]
 
 [params]
 
