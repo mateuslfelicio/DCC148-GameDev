@@ -213,6 +213,7 @@ func _start_dash() -> void:
 	state = State.DASH
 	dash_timer = dash_duration
 	dash_cooldown_timer = dash_cooldown
+	Sfx.play(&"player_dash")
 	if is_on_floor():
 		_restart(&"dash")
 	else:
@@ -270,12 +271,14 @@ func take_hit(source_x: float, damage := 1) -> bool:
 		facing = hit_dir
 		velocity.x = away * block_pushback
 		_block_flash()
+		Sfx.play(&"player_block")
 		return true
 
 	health = maxi(health - damage, 0)
 	combo_index = 0
 	velocity = Vector2(away * knockback_velocity.x, knockback_velocity.y)
 	health_changed.emit(health, max_health)
+	Sfx.play(&"player_hurt")
 	if health <= 0:
 		state = State.DEAD
 		_restart(&"death")
@@ -319,6 +322,8 @@ func _update_hitbox() -> void:
 	if window != hit_window:
 		hit_window = window
 		hitbox.new_window()
+		# Som do golpe no primeiro quadro que acerta (cada janela e um corte)
+		Sfx.play(&"player_heavy_attack" if sprite.animation == &"heavy_attack" else &"player_attack")
 	hitbox.damage = data["damage"]
 	var rects: Array[Rect2] = [data["rect"]]
 	hitbox.set_rects(rects, facing)

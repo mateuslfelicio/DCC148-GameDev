@@ -5,6 +5,9 @@ extends Control
 const main_menu = "res://scenes/main_menu.tscn"
 const game_scene = "res://scenes/game.tscn"
 
+## Som tocado ao abrir a tela (nome usado no autoload Sfx).
+@export var end_sound: StringName = &"defeat"
+
 @onready var play_again: Button = $VBoxContainer/Resume
 @onready var quit: Button = $VBoxContainer/Quit
 
@@ -12,6 +15,7 @@ const game_scene = "res://scenes/game.tscn"
 func _ready() -> void:
 	# Garante que o jogo nao fique pausado ao chegar nesta tela
 	get_tree().paused = false
+	Sfx.play(end_sound)
 
 	if play_again.visible:
 		play_again.grab_focus()
