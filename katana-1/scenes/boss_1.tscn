@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c3b0pndae1pe8" path="res://assets/Sprite Sheet/Attack 1.png" id="1_7j5is"]
 [ext_resource type="Texture2D" uid="uid://cpab6lphlf4qp" path="res://assets/Sprite Sheet/walk.png" id="1_ccptq"]
-[ext_resource type="Script" uid="uid://bdd8wx6k2dhfv" path="res://scenes/boss_1.gd" id="1_oyem3"]
+[ext_resource type="Script" uid="uid://bdd8wx6k2dhfv" path="res://scripts/boss_1.gd" id="1_oyem3"]
 [ext_resource type="Texture2D" uid="uid://cykcw0kqxn052" path="res://assets/Sprite Sheet/Attack 2.png" id="2_oyem3"]
 [ext_resource type="Texture2D" uid="uid://mgccofgnpxgq" path="res://assets/Sprite Sheet/new/death.png" id="3_bngfi"]
 [ext_resource type="Texture2D" uid="uid://opjspus5o3ky" path="res://assets/Sprite Sheet/new/end-Attack 3.png" id="4_3ads5"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://d1p61hshwcedo" path="res://assets/Sprite Sheet/idle.png" id="6_iwuih"]
 [ext_resource type="Texture2D" uid="uid://b53jh0by30342" path="res://assets/Sprite Sheet/new/mid-Attack 3.png" id="7_wt2fp"]
 [ext_resource type="Texture2D" uid="uid://vu443efdgqin" path="res://assets/Sprite Sheet/new/Pre-Attack 3.png" id="8_dn2xv"]
+[ext_resource type="Script" uid="uid://cyn6ubwuwr4gl" path="res://scripts/hurtbox.gd" id="11_3b75m"]
+[ext_resource type="Script" uid="uid://cbcq2fs3e6td7" path="res://scripts/hitbox_debug.gd" id="11_mq0xc"]
+[ext_resource type="Script" uid="uid://cucxgqqf3si0e" path="res://scripts/hitbox.gd" id="12_0hsuw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akmgh"]
 atlas = ExtResource("1_7j5is")
@@ -725,49 +728,42 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn2xv"]
-size = Vector2(20, 55)
+size = Vector2(16, 42.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eofqg"]
-size = Vector2(110, 74)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_eofqg"]
-radius = 26.172504
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbp4"]
-size = Vector2(412, 120)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hsuw"]
+resource_local_to_scene = true
+size = Vector2(16.5, 42)
 
 [node name="Boss_1" type="CharacterBody2D" unique_id=1147499109 groups=["inimigos"]]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_oyem3")
 max_health = 100
-damage = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1496156608]
 sprite_frames = SubResource("SpriteFrames_eofqg")
-animation = &"idle"
+animation = &"atack2"
+frame_progress = 0.33868778
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475500158]
-position = Vector2(-16, 16)
+position = Vector2(-18, 22.25)
 shape = SubResource("RectangleShape2D_dn2xv")
 
-[node name="BladeHitbox" type="Area2D" parent="." unique_id=1437118706]
+[node name="HitboxDebug" type="Node2D" parent="." unique_id=234414842]
+script = ExtResource("11_mq0xc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BladeHitbox" unique_id=1664672683]
-visible = false
-position = Vector2(-1, 6)
-shape = SubResource("RectangleShape2D_eofqg")
+[node name="Hurtbox" type="Area2D" parent="." unique_id=14965086]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("11_3b75m")
 
-[node name="DashHitbox" type="Area2D" parent="." unique_id=749265355]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=102131048]
+position = Vector2(-18.25, 22)
+shape = SubResource("RectangleShape2D_0hsuw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DashHitbox" unique_id=1645364560]
-position = Vector2(-16, 16)
-shape = SubResource("CircleShape2D_eofqg")
-
-[node name="DetectionArea" type="Area2D" parent="." unique_id=1317265082]
-collision_layer = 6
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1238671990]
-position = Vector2(-35, -14)
-shape = SubResource("RectangleShape2D_cqbp4")
+[node name="Hitbox" type="Area2D" parent="." unique_id=2118987264]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("12_0hsuw")
