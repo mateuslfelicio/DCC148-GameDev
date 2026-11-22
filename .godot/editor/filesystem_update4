@@ -10,3 +10,6 @@ res://Scenes/game.tscn
 res://Scenes/inimigo.tscn
 res://Scenes/impact.tscn
 res://Scenes/projetil.tscn
+res://Scenes/boss_1.tscn
+res://Scenes/boss_1.gd
+res://Scripts/game.gd

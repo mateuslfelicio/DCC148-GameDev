@@ -1,6 +1,7 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1795358966
-::res://Assest/::1795358905
+::res://::1795361184
+::res://Assest/::1795361184
+sans.png::CompressedTexture2D::8657250822627112504::1795359387::1795359391::1::::<><><>0<>0<>116622f270755d531ece175daa9df47d<>res://.godot/imported/sans.png-a2bdb6a77a6cddc9051e14fd0bb7d507.ctex::
 tiro.png::CompressedTexture2D::4962530486191367104::1795356624::1795358905::1::::<><><>0<>0<>2dfb35f0ab69aaf2fa6156952561591f<>res://.godot/imported/tiro.png-5bfa6da7f30c60173771d8fb7d927a19.ctex::
 ::res://Assest/Background/::1795300295
 ::res://Assest/Background/Assets/::1795358891
@@ -33,12 +34,24 @@ shoot without FX.png::CompressedTexture2D::9189139831231335381::1618016264::1795
 static idle.png::CompressedTexture2D::6354811956815348265::1618016096::1795358895::1::::<><><>0<>0<>97d9b15c88fab0d81f2e33b04d2e5b43<>res://.godot/imported/static idle.png-d4c97671aab4af19287ac133b171b125.ctex::
 tiro.png::CompressedTexture2D::2039488686364917128::1795356651::1795358895::1::::<><><>0<>0<>a2ce3425cddd60ad55fcadbfa56ea0e6<>res://.godot/imported/tiro.png-10389186c9e8fab2352d0cbee95784fb.ctex::
 wake.png::CompressedTexture2D::1565755415986024503::1618016120::1795358895::1::::<><><>0<>0<>4c2da0a6f03eac090c8a597ac9392120<>res://.godot/imported/wake.png-46ca8f9a6669e50a807aedbee8944241.ctex::
-::res://Scenes/::1795358966
-game.tscn::PackedScene::2793204161097107154::1795358962::0::1::::<><><>0<>0<><>::uid://c7mg53ly4djtm::::res://Scripts/game.gd<>uid://onox53h8bxxg::::res://Scenes/inimigo.tscn<>uid://bs56y6464lm7l::::res://Assest/Background/Background/Base Color.png<>uid://5k0hyskx1jrd::::res://Assest/Background/Assets/Buildings.png<>uid://d35wskfa03drt::::res://Assest/Background/Assets/Props-01.png<>uid://b0datk50aexug::::res://Assest/Background/Assets/Tiles.png<>uid://dbj5nfvdyskpq::::res://Assest/Background/Background/Background Props.png
-impact.tscn::PackedScene::1325766671236559383::1795358964::0::1::::<><><>0<>0<><>::uid://6ee7gy8o645n::::res://impact.gd<>uid://cygu7xyyhsigb::::res://Assest/Bot Wheel/shoot FX.png
-inimigo.tscn::PackedScene::1010373452211015272::1795358966::0::1::::<><><>0<>0<><>::uid://exo0hp55rrfv::::res://Scripts/inimigo.gd<>uid://b0srr7w6mq0i8::::res://Scenes/projetil.tscn<>uid://drv4uxw0o0onc::::res://Assest/Bot Wheel/charge.png<>uid://cl27onn0vtkvo::::res://Assest/Bot Wheel/GAS dash with FX.png<>uid://d3xa1rmykbii3::::res://Assest/Bot Wheel/death.png<>uid://ci150bpsy63vp::::res://Assest/Bot Wheel/damaged.png<>uid://cwsk3bdldug2l::::res://Assest/Bot Wheel/static idle.png<>uid://wkp067wjj82f::::res://Assest/Bot Wheel/wake.png
-projetil.tscn::PackedScene::4179364837748493749::1795358968::0::1::::<><><>0<>0<><>::uid://cgb5vbmvlotbd::::res://projetil.gd<>uid://s5hgh8rcicgd::::res://Scenes/impact.tscn<>uid://ccx5ff2cl4xci::::res://Assest/tiro.png
-::res://Scripts/::1795358966
+::res://Assest/Sprite Sheet/::1795360501
+Attack 1.png::CompressedTexture2D::6741738766177253557::1758912220::1795361189::1::::<><><>0<>0<>d7e109b13e37add8a18b260b8401b476<>res://.godot/imported/Attack 1.png-18ca33927f281ebff9f7ddfcc223d7be.ctex::
+Attack 2.png::CompressedTexture2D::6478179442981058899::1758912229::1795361189::1::::<><><>0<>0<>cb3d7c06c71fa9478dd1583bbf2b6bd6<>res://.godot/imported/Attack 2.png-c4fdd37d528260807478fc04b9c78eb8.ctex::
+idle.png::CompressedTexture2D::9017066705213790676::1758912199::1795361189::1::::<><><>0<>0<>cd5fef90224a5e7ef4b9c9e916004cdd<>res://.godot/imported/idle.png-bb99f326bdf9722496daa305f6be3075.ctex::
+walk.png::CompressedTexture2D::5825790699822402203::1758912205::1795361189::1::::<><><>0<>0<>8d4ccdcb38dff4a5d4e0edccd003adbe<>res://.godot/imported/walk.png-2961c42b670bf51bd39a5d545e0fe12b.ctex::
+::res://Assest/Sprite Sheet/new/::1795360501
+death.png::CompressedTexture2D::854778139095615360::1758912453::1795361190::1::::<><><>0<>0<>f07e5d59bc52abdf39244ab512daddc7<>res://.godot/imported/death.png-72567d9bc9de8828674e7469866aab5a.ctex::
+end-Attack 3.png::CompressedTexture2D::1014188894073387500::1759074719::1795361189::1::::<><><>0<>0<>be06a20f0a32f71f65aa6551ae37e99a<>res://.godot/imported/end-Attack 3.png-832e01d0c16d5aa7f6caa34a4d28507a.ctex::
+hit.png::CompressedTexture2D::2886045877924396715::1758912420::1795361189::1::::<><><>0<>0<>72fd13910b7cb83b153ecfe54ffdcc44<>res://.godot/imported/hit.png-c021925f0bd03de26dbf06be178f7df1.ctex::
+mid-Attack 3.png::CompressedTexture2D::4550448839197420333::1759074600::1795361189::1::::<><><>0<>0<>23827756069fbb33d26deccea4666233<>res://.godot/imported/mid-Attack 3.png-370e3752065c549a7eb21408c52ed215.ctex::
+Pre-Attack 3.png::CompressedTexture2D::1517067329357807453::1758912338::1795361189::1::::<><><>0<>0<>f2afcfa39c5f0b31b4635ff358f92936<>res://.godot/imported/Pre-Attack 3.png-df0faaf9e112f099f4ddb777f88d34be.ctex::
+::res://Scenes/::1795361142
+boss_1.tscn::PackedScene::5042564532464006088::1795361142::0::1::::<><><>0<>0<><>::
+game.tscn::PackedScene::2793204161097107154::1795360929::0::1::::<><><>0<>0<><>::uid://c7mg53ly4djtm::::res://Scripts/game.gd<>uid://onox53h8bxxg::::res://Scenes/inimigo.tscn<>uid://bs56y6464lm7l::::res://Assest/Background/Background/Base Color.png<>uid://5k0hyskx1jrd::::res://Assest/Background/Assets/Buildings.png<>uid://d35wskfa03drt::::res://Assest/Background/Assets/Props-01.png<>uid://b0datk50aexug::::res://Assest/Background/Assets/Tiles.png<>uid://dbj5nfvdyskpq::::res://Assest/Background/Background/Background Props.png<>uid://dvlvwktvbfflw::::res://Assest/sans.png
+impact.tscn::PackedScene::1325766671236559383::1795358964::0::1::::<><><>0<>0<><>::uid://6ee7gy8o645n::::res://Scripts/impact.gd<>uid://cygu7xyyhsigb::::res://Assest/Bot Wheel/shoot FX.png
+inimigo.tscn::PackedScene::1010373452211015272::1795358966::0::1::::<><><>0<>0<><>::uid://exo0hp55rrfv::::res://inimigo.gd<>uid://b0srr7w6mq0i8::::res://Scenes/projetil.tscn<>uid://drv4uxw0o0onc::::res://Assest/Bot Wheel/charge.png<>uid://cl27onn0vtkvo::::res://Assest/Bot Wheel/GAS dash with FX.png<>uid://d3xa1rmykbii3::::res://Assest/Bot Wheel/death.png<>uid://ci150bpsy63vp::::res://Assest/Bot Wheel/damaged.png<>uid://cwsk3bdldug2l::::res://Assest/Bot Wheel/static idle.png<>uid://wkp067wjj82f::::res://Assest/Bot Wheel/wake.png
+projetil.tscn::PackedScene::4179364837748493749::1795358968::0::1::::<><><>0<>0<><>::uid://cgb5vbmvlotbd::::res://Scripts/projetil.gd<>uid://s5hgh8rcicgd::::res://Scenes/impact.tscn<>uid://ccx5ff2cl4xci::::res://Assest/tiro.png
+::res://Scripts/::1795358968
 game.gd::GDScript::7044076261401686878::1795358375::0::1::::<>Node2D<><>0<>0<><>::
 impact.gd::GDScript::2184412030906003061::1795357117::0::1::::<>Node2D<><>0<>0<><>::
 inimigo.gd::GDScript::329131137881215339::1795358802::0::1::::<>CharacterBody2D<><>0<>0<><>::

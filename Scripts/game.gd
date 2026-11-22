@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var enemy_scene: PackedScene
+@export var boss_scene: PackedScene
+
 @export var spawn_cooldown: float = 3.0
 @export var max_enemies: int = 5
 
@@ -12,11 +14,15 @@ extends Node2D
 	$Spawn5
 ]
 
+@onready var boss_spawn_point: Marker2D = $BossMk
+
 var spawn_timer: Timer
 var rng := RandomNumberGenerator.new()
 
 # Guarda qual inimigo está ocupando cada spawn
 var occupied_spawns: Dictionary = {}
+
+var boss_spawned: bool = false
 
 
 func _ready() -> void:
@@ -70,3 +76,18 @@ func _spawn_enemy() -> void:
 
 	# Marca o spawn como ocupado
 	occupied_spawns[spawn_point] = enemy
+
+
+func spawn_boss() -> void:
+	if boss_spawned:
+		return
+
+	if boss_scene == null:
+		return
+
+	var boss = boss_scene.instantiate()
+	boss.global_position = boss_spawn_point.global_position
+
+	add_child(boss)
+
+	boss_spawned = true
