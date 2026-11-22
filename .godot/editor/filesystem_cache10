@@ -1,17 +1,18 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1795300496
-node.tscn::PackedScene::2793204161097107154::1795300332::0::1::::<><><>0<>0<><>::uid://5k0hyskx1jrd::::res://Background/Assets/Buildings.png<>uid://c7mg53ly4djtm::::res://game.gd<>uid://d35wskfa03drt::::res://Background/Assets/Props-01.png<>uid://b0datk50aexug::::res://Background/Assets/Tiles.png<>uid://dbj5nfvdyskpq::::res://Background/Background/Background Props.png<>uid://bs56y6464lm7l::::res://Background/Background/Base Color.png
+::res://::1795302525
+game.gd::GDScript::7044076261401686878::1795300320::0::1::::<>Node<><>0<>0<><>::
+game.tscn::PackedScene::2793204161097107154::1795302466::0::1::::<><><>0<>0<><>::uid://c7mg53ly4djtm::::res://game.gd<>uid://bs56y6464lm7l::::res://Background/Background/Base Color.png<>uid://5k0hyskx1jrd::::res://Background/Assets/Buildings.png<>uid://d35wskfa03drt::::res://Background/Assets/Props-01.png<>uid://b0datk50aexug::::res://Background/Assets/Tiles.png<>uid://dbj5nfvdyskpq::::res://Background/Background/Background Props.png
 ::res://Background/::1795300295
-::res://Background/Assets/::1795300295
+::res://Background/Assets/::1795300497
 Buildings.png::CompressedTexture2D::2127840800911070953::1795300295::1795300497::1::::<><><>0<>0<>927730b8782b8496d042c8ba43f7af0b<>res://.godot/imported/Buildings.png-2a3a0c38dee8e6322963f59a30580aa8.ctex::
 Props-01.png::CompressedTexture2D::9187849456689190033::1795300295::1795300497::1::::<><><>0<>0<>4c6ab67832aa74208dc11e7bb328a991<>res://.godot/imported/Props-01.png-f0e655c8030ae1458ba47384f4401c2f.ctex::
 Tiles.png::CompressedTexture2D::4147369410703987018::1795300295::1795300497::1::::<><><>0<>0<>9532a92492f657932edf8f0239b5ac5f<>res://.godot/imported/Tiles.png-62a730b4ab1d4dc933bb56d5481124f6.ctex::
-::res://Background/Background/::1795300295
+::res://Background/Background/::1795300497
 Background Props.png::CompressedTexture2D::7249875314834372454::1795300295::1795300497::1::::<><><>0<>0<>8e358f5e4029cadd87f60e89bc614a15<>res://.godot/imported/Background Props.png-e0d2c2b944590e60b0333cb16d94730b.ctex::
 Base Color.png::CompressedTexture2D::3713677962099836867::1795300295::1795300497::1::::<><><>0<>0<>3657730f50bd332fed01625a062622bf<>res://.godot/imported/Base Color.png-63f34726adfd67aa2dcd9927fa58be75.ctex::
 Frontal Fog.png::CompressedTexture2D::4478869416875252550::1795300295::1795300497::1::::<><><>0<>0<>8e39f9baada76c16f04d65212cb8fa25<>res://.godot/imported/Frontal Fog.png-a5e740d68bb98f02fc16996ddbeff962.ctex::
 Mid Fog.png::CompressedTexture2D::1862361065102110083::1795300295::1795300497::1::::<><><>0<>0<>6857daf9dec5107176609c82278eb5bf<>res://.godot/imported/Mid Fog.png-c259633bc03059fd0fb103aaa75993d7.ctex::
-::res://Background/Social/::1795300295
+::res://Background/Social/::1795300497
 Background Props.png::CompressedTexture2D::3710151551433820332::1795300295::1795300497::1::::<><><>0<>0<>e15330303798b003c5dc32e6b865108b<>res://.godot/imported/Background Props.png-8fa78f11a24f6cd6272bb21b3f41ed58.ctex::
 Buildings.png::CompressedTexture2D::4481887415919026070::1795300295::1795300497::1::::<><><>0<>0<>cafffc13b06e65129e6510f81b788dea<>res://.godot/imported/Buildings.png-f6282d56090c8dbce55800106c98b45a.ctex::
 MockUp-01.png::CompressedTexture2D::1229509640225395067::1795300295::1795300497::1::::<><><>0<>0<>cc27185c202757e3156624dee7d4f08a<>res://.godot/imported/MockUp-01.png-670c88854a79cf3ed96fd4e4e96ede03.ctex::
