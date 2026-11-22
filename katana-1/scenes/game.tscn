@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d35wskfa03drt" path="res://Assets/Background/Assets/Props-01.png" id="5_o5yvi"]
 [ext_resource type="Texture2D" uid="uid://b0datk50aexug" path="res://Assets/Background/Assets/Tiles.png" id="6_rku1e"]
 [ext_resource type="Texture2D" uid="uid://dbj5nfvdyskpq" path="res://Assets/Background/Background/Background Props.png" id="7_rfjv2"]
-[ext_resource type="Texture2D" path="res://Assets/sans.png" id="8_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://b2iwydrh54m5r" path="res://Assets/sans.png" id="8_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://dr482wrero7wm" path="res://Scenes/pause_menu.tscn" id="10_ldgsr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0urt"]
 texture = ExtResource("4_ldgsr")
@@ -2645,6 +2646,13 @@ size = Vector2(18, 227)
 script = ExtResource("1_v158k")
 enemy_scene = ExtResource("2_1l0tm")
 boss_scene = ExtResource("3_ldgsr")
+
+[node name="PauseMenu" parent="." unique_id=446523832 instance=ExtResource("10_ldgsr")]
+z_index = 2
+offset_right = 480.0
+offset_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="BaseColor" type="Sprite2D" parent="." unique_id=14661286]
 position = Vector2(2525, 318.99997)
