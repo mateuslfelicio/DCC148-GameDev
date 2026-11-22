@@ -4,6 +4,8 @@ extends CanvasLayer
 var mat: ShaderMaterial
 
 func _ready() -> void:
+	# A transicao precisa rodar mesmo com o jogo pausado (ex.: trocar de cena pelo menu de pause)
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	mat = rect.material as ShaderMaterial
 	mat.set_shader_parameter("progress", 0.0)
 	mat.set_shader_parameter("reverse", false)
@@ -30,4 +32,3 @@ func uncover(duration := 0.6) -> void:
 	rect.visible = false
 	mat.set_shader_parameter("reverse", false)
 	mat.set_shader_parameter("progress", 0.0)
-	print(get_tree().paused)
