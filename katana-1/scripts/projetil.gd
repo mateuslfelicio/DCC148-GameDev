@@ -53,8 +53,11 @@ func _on_body_entered(body: Node2D) -> void:
 	or body.is_in_group("enemies"):
 		return
 
-	if body.is_in_group("player") and body.has_method("take_damage"):
-		body.take_damage(damage)
+	if body.is_in_group("player"):
+		if body.has_method("take_hit"):
+			body.take_hit(global_position.x, damage)
+		elif body.has_method("take_damage"):
+			body.take_damage(damage)
 
 	_create_impact()
 
