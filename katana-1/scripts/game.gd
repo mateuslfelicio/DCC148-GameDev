@@ -2,7 +2,7 @@ extends Node2D
 
 @export var enemy_scene: PackedScene
 @export var boss_scene: PackedScene
-
+@export var boss_scene2: PackedScene
 @export var spawn_cooldown: float = 3.0
 @export var max_enemies: int = 4
 
@@ -15,6 +15,7 @@ extends Node2D
 ]
 
 @onready var boss_spawn_point: Marker2D = $BossMk
+@onready var boss_spawn_point2: Marker2D = $BossMk2
 
 var spawn_timer: Timer
 var rng := RandomNumberGenerator.new()
@@ -23,7 +24,7 @@ var rng := RandomNumberGenerator.new()
 var occupied_spawns: Dictionary = {}
 
 var boss_spawned: bool = false
-
+var boss_spawned2: bool = false
 
 func _ready() -> void:
 	rng.randomize()
@@ -36,6 +37,7 @@ func _ready() -> void:
 	# Tenta criar o primeiro inimigo imediatamente
 	_spawn_enemy()
 	spawn_boss()
+	spawn_boss2()
 	spawn_timer.start()
 
 
@@ -90,4 +92,18 @@ func spawn_boss() -> void:
 
 	add_child(boss)
 
+	boss_spawned = true
+	
+func spawn_boss2() -> void:
+	if boss_spawned2:
+		return
+
+	if boss_scene2 == null:
+		return
+
+	var boss2 = boss_scene2.instantiate()
+	boss2.global_position = boss_spawn_point2.global_position
+
+	add_child(boss2)
+	print("spawnou")
 	boss_spawned = true
