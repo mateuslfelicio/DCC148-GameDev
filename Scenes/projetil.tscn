@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b0srr7w6mq0i8"]
+
+[ext_resource type="Script" uid="uid://cgb5vbmvlotbd" path="res://Scripts/projetil.gd" id="1_e1qxg"]
+[ext_resource type="PackedScene" uid="uid://s5hgh8rcicgd" path="res://Scenes/impact.tscn" id="2_tj6io"]
+[ext_resource type="Texture2D" uid="uid://ccx5ff2cl4xci" path="res://Assest/tiro.png" id="3_u11v5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ip8sl"]
+radius = 8.0
+
+[node name="projetil" type="Area2D" unique_id=955572810]
+script = ExtResource("1_e1qxg")
+impact_scene = ExtResource("2_tj6io")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=626927004]
+texture = ExtResource("3_u11v5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1301332824]
+position = Vector2(2, -1)
+shape = SubResource("CircleShape2D_ip8sl")

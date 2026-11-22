@@ -1,1 +1,12 @@
+res://inimigo.tscn
+res://projetil.tscn
+res://inimigo.gd
+res://projetil.gd
+res://impact.tscn
+res://impact.gd
 res://game.tscn
+res://game.gd
+res://Scenes/game.tscn
+res://Scenes/inimigo.tscn
+res://Scenes/impact.tscn
+res://Scenes/projetil.tscn
