@@ -30,3 +30,4 @@ func uncover(duration := 0.6) -> void:
 	rect.visible = false
 	mat.set_shader_parameter("reverse", false)
 	mat.set_shader_parameter("progress", 0.0)
+	print(get_tree().paused)

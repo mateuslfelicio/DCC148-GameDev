@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5gfwcodi4per"
-path="res://.godot/imported/vagabond-block.png-0bc3f5786853369595410c9413dc0c14.ctex"
+path="res://.godot/imported/vagabond-block.png-63540f3f5e5b7e5b04bf500cac043543.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background/Assets/vagabond/sprites/vagabond-block.png"
-dest_files=["res://.godot/imported/vagabond-block.png-0bc3f5786853369595410c9413dc0c14.ctex"]
+source_file="res://Assets/Background/Assets/vagabond/sprites/vagabond-block.png"
+dest_files=["res://.godot/imported/vagabond-block.png-63540f3f5e5b7e5b04bf500cac043543.ctex"]
 
 [params]
 
