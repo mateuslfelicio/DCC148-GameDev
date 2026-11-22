@@ -2704,7 +2704,7 @@ position = Vector2(344, 512)
 position = Vector2(2494, 636)
 
 [node name="Player" parent="." unique_id=1927095454 instance=ExtResource("10_vtaks")]
-position = Vector2(68, 646)
+position = Vector2(3467, 494)
 jump_velocity = -300.0
 double_jump_velocity = -250.0
 
@@ -2732,3 +2732,6 @@ physics_material_override = SubResource("PhysicsMaterial_eofqg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=226014473]
 position = Vector2(-1, -2.5)
 shape = SubResource("RectangleShape2D_tjqua")
+
+[node name="BossMk2" type="Marker2D" parent="." unique_id=801671334]
+position = Vector2(4509, 486)
