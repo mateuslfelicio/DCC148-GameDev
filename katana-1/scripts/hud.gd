@@ -1,13 +1,11 @@
 extends CanvasLayer
 
-## Barras de vida do jogador e do boss, e a mensagem de fim de luta.
+## Barra de vida do jogador e indicador do modo invencivel.
 
 ## Tempo entre a morte do jogador e a tela de derrota.
 const DEFEAT_DELAY := 4
 
 @onready var player_bar: ProgressBar = $PlayerBar
-@onready var boss_bar: ProgressBar = $BossBar
-@onready var boss_name: Label = $BossName
 @onready var message: Label = $Message
 @onready var invincible_button: Button = $InvincibleButton
 
@@ -39,4 +37,4 @@ func _update_invincible_text(enabled: bool) -> void:
 func _call_defeat() -> void:
 	# Deixa a animacao de morte aparecer antes de trocar de cena
 	await get_tree().create_timer(DEFEAT_DELAY).timeout
-	SceneManager.changeSceneTo(load("res://Scenes/win_screen.tscn"))
+	SceneManager.changeSceneTo(load("res://scenes/defeat_screen.tscn"))

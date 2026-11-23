@@ -9,6 +9,10 @@ extends Node2D
 @export_enum("Boss 1 (boss_scene)", "Boss 2 (boss_scene2)") var walls_open_with_boss: int = 1
 
 const BOUNDS_THICKNESS: float = 32.0
+## Tempo entre a morte do ultimo boss e a tela de vitoria.
+const VICTORY_DELAY: float = 2.5
+## Boss cuja morte vence o jogo (2 = boss_scene2, o Impaler).
+const FINAL_BOSS: int = 2
 # Altura extra acima da fase para o player não pular por cima da parede
 const BOUNDS_EXTRA_HEIGHT: float = 1000.0
 
@@ -242,6 +246,16 @@ func _on_boss_died(index: int) -> void:
 	if bosses_dead[1] and bosses_dead[2] and not boss_defeated:
 		boss_defeated = true
 		_disable_level_bounds()
+
+	# O Impaler (boss_scene2) é o boss final: derrotá-lo vence o jogo
+	if index == FINAL_BOSS:
+		_call_victory()
+
+
+## Boss final derrotado: espera a animacao de morte e mostra a tela de vitoria.
+func _call_victory() -> void:
+	await get_tree().create_timer(VICTORY_DELAY).timeout
+	SceneManager.changeSceneTo(load("res://scenes/win_screen.tscn"))
 
 
 ## Remove as barreiras laterais da arena (colisão desligada e escondidas).
