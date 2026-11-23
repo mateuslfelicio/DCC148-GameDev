@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cafhvmhlfa4js"
-path="res://.godot/imported/shot_muffled.wav-bfa1964a7a9715cef2b3023d313d1fab.sample"
+path="res://.godot/imported/shot_muffled.wav-882267a0dbe5163f27ff13f02eddc194.sample"
 
 [deps]
 
-source_file="res://assets/sounds/shot_muffled.wav"
-dest_files=["res://.godot/imported/shot_muffled.wav-bfa1964a7a9715cef2b3023d313d1fab.sample"]
+source_file="res://Assets/sounds/shot_muffled.wav"
+dest_files=["res://.godot/imported/shot_muffled.wav-882267a0dbe5163f27ff13f02eddc194.sample"]
 
 [params]
 
