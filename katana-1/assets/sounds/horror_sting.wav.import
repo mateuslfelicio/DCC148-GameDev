@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bnw6xs3t50ot3"
-path="res://.godot/imported/horror_sting.wav-2a57741fb1c6d5f4f1e84fa4bf04076f.sample"
+path="res://.godot/imported/horror_sting.wav-3057c12c7b79049a18d1937eab1f7ad4.sample"
 
 [deps]
 
-source_file="res://Assets/sounds/horror_sting.wav"
-dest_files=["res://.godot/imported/horror_sting.wav-2a57741fb1c6d5f4f1e84fa4bf04076f.sample"]
+source_file="res://assets/sounds/horror_sting.wav"
+dest_files=["res://.godot/imported/horror_sting.wav-3057c12c7b79049a18d1937eab1f7ad4.sample"]
 
 [params]
 

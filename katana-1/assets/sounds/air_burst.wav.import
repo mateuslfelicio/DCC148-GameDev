@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://batkjf8kooji3"
-path="res://.godot/imported/air_burst.wav-0b09bebd7301635192f8aa13d97612b7.sample"
+path="res://.godot/imported/air_burst.wav-4a0d179e27b93a4e59fe4dd2cebe5ea8.sample"
 
 [deps]
 
-source_file="res://Assets/sounds/air_burst.wav"
-dest_files=["res://.godot/imported/air_burst.wav-0b09bebd7301635192f8aa13d97612b7.sample"]
+source_file="res://assets/sounds/air_burst.wav"
+dest_files=["res://.godot/imported/air_burst.wav-4a0d179e27b93a4e59fe4dd2cebe5ea8.sample"]
 
 [params]
 
