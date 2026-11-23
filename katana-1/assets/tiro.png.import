@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccx5ff2cl4xci"
-path="res://.godot/imported/tiro.png-6907e9ec6099e9ec82f121feb167732b.ctex"
+path="res://.godot/imported/tiro.png-10a32293e685f3a19a63ca28451700f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tiro.png"
-dest_files=["res://.godot/imported/tiro.png-6907e9ec6099e9ec82f121feb167732b.ctex"]
+source_file="res://assets/tiro.png"
+dest_files=["res://.godot/imported/tiro.png-10a32293e685f3a19a63ca28451700f9.ctex"]
 
 [params]
 

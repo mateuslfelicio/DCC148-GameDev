@@ -30,7 +30,7 @@ shape = SubResource("shape")
 [node name="HitboxDebug" type="Node2D" parent="." unique_id=197918188]
 script = ExtResource("3_debug")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=521955538]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=521955538 groups=["boss", "enemies"]]
 collision_layer = 16
 collision_mask = 0
 monitoring = false

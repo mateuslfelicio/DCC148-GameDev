@@ -41,6 +41,12 @@ signal died
 @export var hit_duration: float = 0.3
 @export var invulnerability_duration: float = 0.4
 
+# Arena
+## Nomes dos nós (paredes) que somem da cena quando este boss morre.
+@export var arena_wall_names: Array[StringName] = [&"LeftWall", &"RightWall"]
+## Gatilho da arena: é desligado na morte do boss para não fechar as paredes de novo.
+@export var arena_trigger_name: StringName = &"Trigger"
+
 @export_group("Áreas de colisão")
 ## Retângulos em coordenadas locais do boss, desenhados OLHANDO PARA A DIREITA.
 ## O Hurtbox/Hitbox espelham sozinhos quando o boss vira. Ajuste vendo
@@ -52,7 +58,7 @@ signal died
 ## junto com o boss). Use para alinhar as áreas com o desenho do boss.
 @export var rect_offset: Vector2 = Vector2.ZERO
 ## Desenha o contorno do que o script envia: azul = corpo, vermelho = golpe.
-@export var debug_draw: bool = true
+@export var debug_draw: bool = false
 
 
 # =========================
@@ -629,7 +635,23 @@ func _die() -> void:
 
 	Sfx.play_at(&"boss_death", global_position)
 	sprite.play("death")
+
+	_open_arena()
 	died.emit()
+
+
+## Remove as paredes da arena (e desliga o gatilho que as fecha) quando o boss morre.
+func _open_arena() -> void:
+	var root: Node = get_tree().root
+
+	for wall_name in arena_wall_names:
+		var wall: Node = root.find_child(String(wall_name), true, false)
+		if wall != null:
+			wall.queue_free()
+
+	var trigger := root.find_child(String(arena_trigger_name), true, false) as Area2D
+	if trigger != null:
+		trigger.set_deferred("monitoring", false)
 
 
 func _return_to_normal() -> void:

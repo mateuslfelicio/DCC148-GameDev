@@ -1,14 +1,14 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bbfkll8wunp8i"]
 
-[ext_resource type="Texture2D" uid="uid://shmq03h27x5v" path="res://Assets/Impaler Boss/sprites/impaler-attack1.png" id="1_e5sri"]
-[ext_resource type="Texture2D" uid="uid://dijwgcxfebn5o" path="res://Assets/Impaler Boss/sprites/impaler-attack2.png" id="2_frf2b"]
-[ext_resource type="Texture2D" uid="uid://bqthmffgwqoxr" path="res://Assets/Impaler Boss/sprites/impaler-attack3.png" id="3_jj1h0"]
-[ext_resource type="Texture2D" uid="uid://lv7wrcob4xb7" path="res://Assets/Impaler Boss/sprites/impaler-attack4.png" id="4_25tov"]
-[ext_resource type="Texture2D" uid="uid://d0wlf1lgdrtqt" path="res://Assets/Impaler Boss/sprites/impaler-attack5.png" id="5_ihlim"]
-[ext_resource type="Texture2D" uid="uid://cx2npq6g237ch" path="res://Assets/Impaler Boss/sprites/impaler-attack6.png" id="6_677tr"]
-[ext_resource type="Texture2D" uid="uid://c8jlopggn5ha3" path="res://Assets/Impaler Boss/sprites/impaler-death.png" id="7_mpcdu"]
-[ext_resource type="Texture2D" uid="uid://cpokb64uh3mdy" path="res://Assets/Impaler Boss/sprites/impaler-idle.png" id="8_q6jgu"]
-[ext_resource type="Texture2D" uid="uid://cs1q1up1fpr5c" path="res://Assets/Impaler Boss/sprites/impaler-walk.png" id="9_wfegh"]
+[ext_resource type="Texture2D" uid="uid://shmq03h27x5v" path="res://assets/Impaler Boss/sprites/impaler-attack1.png" id="1_e5sri"]
+[ext_resource type="Texture2D" uid="uid://dijwgcxfebn5o" path="res://assets/Impaler Boss/sprites/impaler-attack2.png" id="2_frf2b"]
+[ext_resource type="Texture2D" uid="uid://bqthmffgwqoxr" path="res://assets/Impaler Boss/sprites/impaler-attack3.png" id="3_jj1h0"]
+[ext_resource type="Texture2D" uid="uid://lv7wrcob4xb7" path="res://assets/Impaler Boss/sprites/impaler-attack4.png" id="4_25tov"]
+[ext_resource type="Texture2D" uid="uid://d0wlf1lgdrtqt" path="res://assets/Impaler Boss/sprites/impaler-attack5.png" id="5_ihlim"]
+[ext_resource type="Texture2D" uid="uid://cx2npq6g237ch" path="res://assets/Impaler Boss/sprites/impaler-attack6.png" id="6_677tr"]
+[ext_resource type="Texture2D" uid="uid://c8jlopggn5ha3" path="res://assets/Impaler Boss/sprites/impaler-death.png" id="7_mpcdu"]
+[ext_resource type="Texture2D" uid="uid://cpokb64uh3mdy" path="res://assets/Impaler Boss/sprites/impaler-idle.png" id="8_q6jgu"]
+[ext_resource type="Texture2D" uid="uid://cs1q1up1fpr5c" path="res://assets/Impaler Boss/sprites/impaler-walk.png" id="9_wfegh"]
 
 [sub_resource type="AtlasTexture" id="attack1_0"]
 atlas = ExtResource("1_e5sri")

@@ -5,6 +5,8 @@ extends Node2D
 @export var boss_scene2: PackedScene
 @export var spawn_cooldown: float = 3.0
 @export var max_enemies: int = 4
+## Qual boss, ao morrer, abre as paredes laterais da arena (LeftWall e RightWall).
+@export_enum("Boss 1 (boss_scene)", "Boss 2 (boss_scene2)") var walls_open_with_boss: int = 1
 
 const BOUNDS_THICKNESS: float = 32.0
 # Altura extra acima da fase para o player não pular por cima da parede
@@ -32,6 +34,13 @@ const BOUNDS_EXTRA_HEIGHT: float = 1000.0
 ]
 @onready var boss_spawn_point2: Marker2D = $BossMk2
 
+# Paredes laterais da arena e o gatilho que as fecha
+@onready var arena_walls: Array[CollisionObject2D] = [
+	$LeftWall,
+	$RightWall
+]
+@onready var arena_trigger: Node = get_node_or_null("Trigger")
+
 var spawn_timer: Timer
 var rng := RandomNumberGenerator.new()
 
@@ -40,6 +49,10 @@ var occupied_spawns: Dictionary = {}
 
 var boss_spawned: bool = false
 var boss_spawned2: bool = false
+var boss_defeated: bool = false
+
+# Quais bosses já morreram (1 = boss_scene, 2 = boss_scene2)
+var bosses_dead: Dictionary = {1: false, 2: false}
 
 func _ready() -> void:
 	rng.randomize()
@@ -107,9 +120,11 @@ func spawn_boss() -> void:
 		return
 
 	var boss = boss_scene.instantiate()
-	boss.global_position = boss_spawn_point.global_position
 
 	add_child(boss)
+	boss.global_position = boss_spawn_point.global_position
+	boss.add_to_group("boss")
+	_watch_boss(boss, 1)
 
 	boss_spawned = true
 
@@ -122,9 +137,11 @@ func spawn_boss2() -> void:
 		return
 
 	var boss2 = boss_scene2.instantiate()
-	boss2.global_position = boss_spawn_point2.global_position
 
 	add_child(boss2)
+	boss2.global_position = boss_spawn_point2.global_position
+	boss2.add_to_group("boss")
+	_watch_boss(boss2, 2)
 
 	boss_spawned2 = true
 
@@ -162,6 +179,8 @@ func _setup_level_bounds(level_rect: Rect2) -> void:
 func _create_wall(wall_name: String, wall_position: Vector2, height: float) -> void:
 	var wall := StaticBody2D.new()
 	wall.name = wall_name
+	wall.add_to_group("wall")
+	wall.collision_layer = 1
 	wall.collision_mask = 0
 	wall.global_position = wall_position
 
@@ -194,3 +213,69 @@ func _setup_camera_limits(level_rect: Rect2) -> void:
 		var extra := (view_size.y - level_rect.size.y) * 0.5
 		camera.limit_top = roundi(level_rect.position.y - extra)
 		camera.limit_bottom = roundi(level_rect.end.y + extra)
+
+
+# =========================
+# BOSSES E PAREDES DA ARENA
+# =========================
+
+## Fica de olho na morte do boss. `index` = 1 (boss_scene) ou 2 (boss_scene2).
+func _watch_boss(boss: Node, index: int) -> void:
+	if boss.has_signal("died"):
+		boss.connect("died", _on_boss_died.bind(index))
+	else:
+		# Plano B: sem sinal "died", considera morto quando o boss sai da cena
+		boss.tree_exited.connect(_on_boss_died.bind(index))
+
+
+func _on_boss_died(index: int) -> void:
+	if bosses_dead.get(index, false):
+		return
+
+	bosses_dead[index] = true
+
+	# Paredes laterais: abrem só quando o boss escolhido morre
+	if index == walls_open_with_boss + 1:
+		_open_arena_walls()
+
+	# Os dois bosses derrotados: libera também os limites da fase
+	if bosses_dead[1] and bosses_dead[2] and not boss_defeated:
+		boss_defeated = true
+		_disable_level_bounds()
+
+
+## Remove as barreiras laterais da arena (colisão desligada e escondidas).
+func _open_arena_walls() -> void:
+	for wall in arena_walls:
+		if not is_instance_valid(wall):
+			continue
+
+		wall.set_deferred("collision_layer", 0)
+		wall.set_deferred("collision_mask", 0)
+
+		for child in wall.get_children():
+			if child is CollisionShape2D or child is CollisionPolygon2D:
+				child.set_deferred("disabled", true)
+
+		wall.hide()
+
+	# Impede o gatilho da arena de fechar as paredes de novo
+	if arena_trigger is Area2D:
+		arena_trigger.set_deferred("monitoring", false)
+		arena_trigger.set_deferred("monitorable", false)
+
+
+func _disable_level_bounds() -> void:
+	var walls := get_tree().get_nodes_in_group("wall")
+	print("Desativando paredes. Paredes encontradas: ", walls.size())
+
+
+	for wall in walls:
+		if wall is StaticBody2D:
+			wall.collision_layer = 0
+			wall.collision_mask = 0
+			for child in wall.get_children():
+				if child is CollisionShape2D:
+					child.set_deferred("disabled", true)
+
+	print("Bosses derrotados! Paredes do grupo wall desativadas.")
