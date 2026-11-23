@@ -10,6 +10,9 @@ func _ready() -> void:
 func _on_play_pressed() -> void:
 	SceneManager.changeSceneTo(game_scene)
 
+func _on_credits_pressed() -> void:
+	SceneManager.changeSceneTo(load("res://scenes/credits.tscn"))
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 

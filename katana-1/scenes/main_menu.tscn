@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5vwddrer4cim"]
 
 [ext_resource type="Script" uid="uid://b00vokjcoeohv" path="res://scripts/main_menu.gd" id="1_28flt"]
-[ext_resource type="PackedScene" uid="uid://bf2bwudgqdykg" path="res://Scenes/game.tscn" id="2_48xlc"]
+[ext_resource type="PackedScene" uid="uid://bf2bwudgqdykg" path="res://scenes/game.tscn" id="2_48xlc"]
 
 [node name="MainMenu" type="Control" unique_id=1858009167]
 layout_mode = 3
@@ -46,7 +46,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -50.0
-offset_top = -100.0
+offset_top = -120.0
 offset_right = 50.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -60,6 +60,11 @@ text = "Play"
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Controls"
+
+[node name="Credits" type="Button" parent="MenuScreen/VBoxContainer" unique_id=1373920511]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Credits"
 
 [node name="Quit" type="Button" parent="MenuScreen/VBoxContainer" unique_id=1969160216]
 layout_mode = 2
@@ -132,5 +137,6 @@ text = "Return"
 
 [connection signal="pressed" from="MenuScreen/VBoxContainer/Play" to="Node" method="_on_play_pressed"]
 [connection signal="pressed" from="MenuScreen/VBoxContainer/Controls" to="Node" method="_on_controls_pressed"]
+[connection signal="pressed" from="MenuScreen/VBoxContainer/Credits" to="Node" method="_on_credits_pressed"]
 [connection signal="pressed" from="MenuScreen/VBoxContainer/Quit" to="Node" method="_on_quit_pressed"]
 [connection signal="pressed" from="ControlsMenu/VBoxContainer/Return" to="Node" method="_on_return_pressed"]
